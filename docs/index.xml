@@ -4,4 +4,4 @@ Add the Helm repository helm repo add owl https://eddienko.github.io/owl-pipelin
 helm update
 Install the chart The Owl chart bootstraps the Owl Scheduler on Kubernetes using the Helm package manager. The chart deploys the following components on the Kubernetes cluster:
 Owl Scheduler Owl API helm install owl owl/owl-server \ -n owl --create-namespace -f values.yaml
-Where values.</description></item></channel></rss>
+Where values.</description></item><item><title>Creating Pipelines</title><link>https://eddienko.github.io/owl-pipeline/docs/pipelines/development/</link><pubDate>Sun, 15 Aug 2021 20:55:31 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/pipelines/development/</guid><description>Owl pipelines are pip installable Python packages. This page shows how to create a pipeline from scratch.</description></item></channel></rss>
