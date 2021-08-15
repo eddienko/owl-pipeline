@@ -1,5 +1,5 @@
 ---
-title: "Quick start"
+title: "Quick Start"
 description: ""
 lead: ""
 date: 2021-08-15T10:59:50+01:00
@@ -9,7 +9,8 @@ images: []
 menu: 
   docs:
     parent: "client"
-weight: 401
+    identifier: "client-quick-start"
+weight: 402
 toc: true
 ---
 
@@ -18,41 +19,40 @@ toc: true
 The Owl client requires Python 3.7 or higher. The latest stable version can be 
 installed from PyPi:
 
-```
+```bash
 pip install owl-pipeline-client
 ```
 
-## Quick start
-
-### Authenticate to remote server
+## Authenticate to remote server
 
 Using your credentials 
 
-```
+```bash
 owl login
 ```
 
 This will ask for your username and password. Credentials will be saved to a file in your home 
 directory `$HOME/.owlrc`.
 
-### Pipeline definition file
+## Pipeline definition file
 
 List all available pipelines in the remote server using:
 
-```
+```bash
 owl pdef list
 ```
 
-If the server has been configured as per the instructions the `example` pipeline will be available.
+If the server has been configured as per the [Quick Start]({{< relref "quickstart" >}})
+instructions the `example` pipeline will be available.
 Retrieve the pipeline definition file using:
 
-```
+```bash
 owl pdef get example -o example.yml
 ```
 
 This looks like:
 
-```
+```yaml
 # Version of the configuration file
 version: 1
 
@@ -73,11 +73,11 @@ The example pipeline runs a series of dummy computations using [Dask](https://da
 It has a unique input parameter
 `datalen` which basically controls how long the pipeline runs. 
 
-### Submit pipeline
+## Submit pipeline
 
 Adjust the resources and submit the pipeline using:
 
-```
+```bash
 owl submit example.yml
 ```
 
