@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eddienko.github.io/owl-pipeline/sitemap.xml
