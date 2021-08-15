@@ -42,7 +42,7 @@ List all available pipelines in the remote server using:
 owl pdef list
 ```
 
-If the server has been configured as per the [Quick Start]({{< relref "quickstart" >}})
+If the server has been configured as per the
 instructions the `example` pipeline will be available.
 Retrieve the pipeline definition file using:
 
