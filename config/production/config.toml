@@ -1,0 +1,2 @@
+baseurl = "https://eddienko.github.io/owl-pipeline/"
+canonifyURLs = true
