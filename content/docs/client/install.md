@@ -16,8 +16,20 @@ toc: true
 
 ## Install
 
-The Owl client requires Python 3.7 or higher. The latest stable version can be 
-installed from PyPi:
+The Owl client requires Python 3.7 or higher. It is recommended to create a Python environment,
+e.g., using conda:
+
+```bash
+conda create -n pipelines python=3.7
+```
+
+In order to use the new environment:
+
+```bash
+conda activate pipelines
+```
+
+The latest stable version of the Owl client can be installed from PyPi:
 
 ```bash
 pip install owl-pipeline-client
