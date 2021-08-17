@@ -1,7 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docs on</title><link>https://eddienko.github.io/owl-pipeline/docs/</link><description>Recent content in Docs on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 06 Oct 2020 08:48:23 +0000</lastBuildDate><atom:link href="https://eddienko.github.io/owl-pipeline/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction</title><link>https://eddienko.github.io/owl-pipeline/docs/server/introduction/</link><pubDate>Sun, 15 Aug 2021 11:25:27 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/server/introduction/</guid><description/></item><item><title>Install</title><link>https://eddienko.github.io/owl-pipeline/docs/server/install/</link><pubDate>Sun, 15 Aug 2021 16:56:40 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/server/install/</guid><description>👉
-Throughout this documentation we assume that Helm 3 is installed.
-Add the Helm repository helm repo add owl https://eddienko.github.io/owl-pipeline/charts
-helm update
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docs on</title><link>https://eddienko.github.io/owl-pipeline/docs/</link><description>Recent content in Docs on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 06 Oct 2020 08:48:23 +0000</lastBuildDate><atom:link href="https://eddienko.github.io/owl-pipeline/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Install</title><link>https://eddienko.github.io/owl-pipeline/docs/server/install/</link><pubDate>Sun, 15 Aug 2021 16:56:40 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/server/install/</guid><description>👉
+Throughout this documentation we assume that Helm 3 is used.
+Add the Helm repository helm repo add owl https://eddienko.github.io/owl-pipeline-server/
+helm repo update
 Install the chart The Owl chart bootstraps the Owl Scheduler on Kubernetes using the Helm package manager. The chart deploys the following components on the Kubernetes cluster:
-Owl Scheduler Owl API helm install owl owl/owl-server \ -n owl --create-namespace -f values.yaml
-Where values.</description></item><item><title>Creating Pipelines</title><link>https://eddienko.github.io/owl-pipeline/docs/pipelines/development/</link><pubDate>Sun, 15 Aug 2021 20:55:31 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/pipelines/development/</guid><description>Owl pipelines are pip installable Python packages. This page shows how to create a pipeline from scratch.</description></item></channel></rss>
+Owl Scheduler Owl API helm install owl owl/owl \ -n owl --create-namespace -f values.yaml
+Where values.</description></item><item><title>Configuration</title><link>https://eddienko.github.io/owl-pipeline/docs/server/configuration/</link><pubDate>Sun, 15 Aug 2021 16:56:40 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/server/configuration/</guid><description>Admin password On the first launch the database schema is created and a defaul random admin password created. You can recover the default password using:
+POD_NAME=$(kubectl get pods --namespace owl -l &amp;quot;app.kubernetes.io/name=owl-scheduler,app.kubernetes.io/instance=owl&amp;quot; -o jsonpath=&amp;quot;{.items[0].metadata.name}&amp;quot;)
+ADMIN_PASSWORD=$(kubectl exec $POD_NAME -- cat /var/run/owl/adminPassword)
+echo $ADMIN_PASSWORD
+Use the password to login and change the admin password:
+# Use the initial password
+owl login
+# Update the password
+owl admin user update --admin admin yourNewPassword
+# Login with the new password
+owl login
+New users can be added with</description></item><item><title>Advanced</title><link>https://eddienko.github.io/owl-pipeline/docs/server/advanced/</link><pubDate>Sun, 15 Aug 2021 16:56:40 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/server/advanced/</guid><description>External user database TBD. It is possible to have the user database managed by an external application, e.g. a Django site.
+Custom Docker image for pipelines As part of the resources section of the pipeline definition file it is possible to specify a custom Docker image, e.g.:
+resources:
+threads: 10
+workers: 2
+memory: 10
+image: myrepo/customimage:tag</description></item><item><title>Troubleshooting</title><link>https://eddienko.github.io/owl-pipeline/docs/server/troubleshoot/</link><pubDate>Sun, 15 Aug 2021 16:56:40 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/server/troubleshoot/</guid><description/></item><item><title>Creating Pipelines</title><link>https://eddienko.github.io/owl-pipeline/docs/pipelines/development/</link><pubDate>Sun, 15 Aug 2021 20:55:31 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/pipelines/development/</guid><description>Owl pipelines are pip installable Python packages. This page shows how to create a pipeline from scratch.</description></item></channel></rss>
