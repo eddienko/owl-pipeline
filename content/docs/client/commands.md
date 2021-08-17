@@ -45,6 +45,3 @@ owl logs get 1
 # Cancel Job ID 1
 owl cancel 1
 ```
-
-
-

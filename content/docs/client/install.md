@@ -14,6 +14,8 @@ weight: 402
 toc: true
 ---
 
+Thw Owl client is used to interact with the Owl Server and submit jobs to the Kubernetes cluster.
+It can also be used to perform some admin tasks.
 ## Install
 
 The Owl client requires Python 3.7 or higher. It is recommended to create a Python environment,
@@ -92,6 +94,3 @@ Adjust the resources and submit the pipeline using:
 ```bash
 owl submit example.yml
 ```
-
-
-

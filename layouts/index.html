@@ -41,16 +41,15 @@
 
     <hr />
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-10">
         <h2 class="h4">Submit pipelines from anywhere</h2>
         <p>Authenticate to the Owl Server and submit jobs that run in a remote Kubernetes cluster.
 
         </p>
       </div>
 
-      <div class="col-md-8 code-block">
-        <pre><code class="language-bash">
-# Authenticate
+      <div class="col-md-6 code-block">
+        <pre><code class="language-bash"># Authenticate
 owl login
 
 # Submit pipeline
@@ -60,19 +59,23 @@ owl submit pipeline.yml</code></pre>
 
     <hr />
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-10">
         <h2 class="h4">Run parameterized pipelines</h2>
-        <p>Execute pipelines at scale with user supplied parameters allocating custom server resources.</p>
-        <p>Out of the box pipelines include a
-          <code>example</code> pipeline, a <code>shell</code> pipeline that executes a command
+        <p>Execute pipelines at scale with user supplied parameters allocating custom server resources.
+          Parellel and distributed computation is powered by <a href="http://dask.org">Dask</a>.
+        </p>
+        <p>The basic idea is that a user can run pipelines (or data analysis recipes) with different data or different
+          parameters without the need of any code.
+          Out of the box pipelines include an
+          <code>example</code> pipeline for demonstration purposes, a <code>shell</code> pipeline that executes a
+          command
           or a script and a <code>papermill</code> pipeline that runs a parameterized Jupyter notebook.
         </p>
-        <p>More complex pipelines for image analysis and data processing are available in the showcase section.</p>
+        <p>More complex pipelines for image analysis and data processing will be available in the showcase section.</p>
       </div>
 
-      <div class="col-md-8 code-block">
-        <pre><code class="language-yaml">
-version: 1
+      <div class="col-md-6 code-block">
+        <pre><code class="language-yaml">version: 1
 
 # Name of the pipeline
 name: example
@@ -91,15 +94,14 @@ resources:
 
     <hr />
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-10">
         <h2 class="h4">Build reusable pipelines</h2>
-        <p>Develop reusable pipelines that can be run with custom parameters.</p>
+        <p>Develop reusable pipelines that can be run by all users with custom parameters.</p>
         <p>Owl pipelines are Python packages that can be installed using pip.</p>
       </div>
 
-      <div class="col-md-8 code-block">
-        <pre><code class="language-python">
-from dask import delayed
+      <div class="col-md-6 code-block">
+        <pre><code class="language-python">from dask import delayed
 from owl_dev import pipeline
 from owl_dev.logging import logger
   
@@ -122,6 +124,29 @@ def main(*, datalen: int) -> int:
 
   </div>
 </section>
+
+<!--
+<section class="section section-sm">
+  <div class="container">
+
+    <hr />
+
+    <div class="row">
+      <div class="col-md-4">
+        <img class="img-responsive" alt="" height="100px" src="img/python.png" />
+      </div>
+      <div class="col-md-4">
+        <img class="img-responsive" alt="" height="100px" src="img/dask.png" />
+      </div>
+      <div class="col-md-4">
+        <img class="img-responsive" alt="" height="100px" src="img/k8s.png" />
+      </div>
+
+    </div>
+
+  </div>
+</section>
+-->
 
 
 {{ end }}
