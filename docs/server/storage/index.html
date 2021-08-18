@@ -13,16 +13,16 @@
 <meta name=robots content="index, follow">
 <meta name=googlebot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name=bingbot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<title>Advanced - Owl</title>
+<title>Storage - Owl</title>
 <meta name=description content="Owl is a job scheduler that allows to submit user jobs to a Kubernetes from anywhere.">
-<link rel=canonical href=https://eddienko.github.io/owl-pipeline/docs/server/advanced/>
+<link rel=canonical href=https://eddienko.github.io/owl-pipeline/docs/server/storage/>
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Advanced">
-<meta property="og:description" content="External user database TBD. It is possible to have the user database managed by an external application, e.g. a Django site.
-Custom Docker image for pipelines As part of the resources section of the pipeline definition file it is possible to specify a custom Docker image, e.g.:
-resources:threads: 10workers: 2memory: 10image: myrepo/customimage:tag ">
-<meta property="og:url" content="https://eddienko.github.io/owl-pipeline/docs/server/advanced/">
+<meta property="og:title" content="Storage">
+<meta property="og:description" content="Scheduler By default a PVC is created that stores the SQLite database and logs from the pipelines. This is mounted in /var/run/owl.
+TBD.
+Pipeline jobs TBD.">
+<meta property="og:url" content="https://eddienko.github.io/owl-pipeline/docs/server/storage/">
 <meta property="og:site_name" content="Owl">
 <meta property="article:published_time" content="2021-08-15T16:56:40+01:00">
 <meta property="article:modified_time" content="2021-08-15T16:56:40+01:00">
@@ -31,11 +31,11 @@ resources:threads: 10workers: 2memory: 10image: myrepo/customimage:tag ">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:site content="@getdoks">
 <meta name=twitter:creator content="@henkverlinde">
-<meta name=twitter:title content="Advanced">
+<meta name=twitter:title content="Storage">
 <meta name=twitter:description content>
 <meta name=twitter:image content="https://eddienko.github.io/owl-pipeline/doks.png">
-<meta name=twitter:image:alt content="Advanced">
-<script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://eddienko.github.io/#/schema/organization/1","name":"Doks","url":"https://eddienko.github.io/","sameAs":["https://twitter.com/getdoks","https://github.com/h-enk/doks"],"logo":{"@type":"ImageObject","@id":"https://eddienko.github.io/#/schema/image/1","url":"https://eddienko.github.io/logo-doks.png","width":512,"height":512,"caption":"Doks"},"image":{"@id":"https://eddienko.github.io/#/schema/image/1"}},{"@type":"WebSite","@id":"https://eddienko.github.io/#/schema/website/1","url":"https://eddienko.github.io/","name":"Owl","description":"Owl is a job scheduler that allows to submit user jobs to a Kubernetes from anywhere.","publisher":{"@id":"https://eddienko.github.io/#/schema/organization/1"}},{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/server/advanced/","url":"https://eddienko.github.io/owl-pipeline/docs/server/advanced/","name":"Advanced","description":"","isPartOf":{"@id":"https://eddienko.github.io/#/schema/website/1"},"about":{"@id":"https://eddienko.github.io/#/schema/organization/1"},"datePublished":"2021-08-15T16:56:40CET","dateModified":"2021-08-15T16:56:40CET","breadcrumb":{"@id":"https://eddienko.github.io/owl-pipeline/docs/server/advanced/#/schema/breadcrumb/1"},"primaryImageOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/server/advanced/#/schema/image/2"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://eddienko.github.io/owl-pipeline/docs/server/advanced/"]}]},{"@type":"BreadcrumbList","@id":"https://eddienko.github.io/owl-pipeline/docs/server/advanced/#/schema/breadcrumb/1","name":"Breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/","url":"https://eddienko.github.io/owl-pipeline/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/","url":"https://eddienko.github.io/owl-pipeline/docs/","name":"Docs"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/server/","url":"https://eddienko.github.io/owl-pipeline/docs/server/","name":"Server"}},{"@type":"ListItem","position":4,"item":{"@id":"https://eddienko.github.io/owl-pipeline/docs/server/advanced/"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://eddienko.github.io/#/schema/article/1","headline":"Advanced","description":"","isPartOf":{"@id":"https://eddienko.github.io/owl-pipeline/docs/server/advanced/"},"mainEntityOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/server/advanced/"},"datePublished":"2021-08-15T16:56:40CET","dateModified":"2021-08-15T16:56:40CET","author":{"@id":"https://eddienko.github.io/#/schema/person/2"},"publisher":{"@id":"https://eddienko.github.io/#/schema/organization/1"},"image":{"@id":"https://eddienko.github.io/owl-pipeline/docs/server/advanced/#/schema/image/2"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://eddienko.github.io/#/schema/person/2","name":"Henk Verlinde","sameAs":["https://twitter.com/henkverlinde","https://www.linkedin.com/in/henkverlinde/","https://github.com/h-enk"]}]},{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","@id":"https://eddienko.github.io/owl-pipeline/docs/server/advanced/#/schema/image/2","url":"https://eddienko.github.io/owl-pipeline/doks.png","contentUrl":"https://eddienko.github.io/owl-pipeline/doks.png","caption":"Advanced"}]}]}</script>
+<meta name=twitter:image:alt content="Storage">
+<script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://eddienko.github.io/#/schema/organization/1","name":"Doks","url":"https://eddienko.github.io/","sameAs":["https://twitter.com/getdoks","https://github.com/h-enk/doks"],"logo":{"@type":"ImageObject","@id":"https://eddienko.github.io/#/schema/image/1","url":"https://eddienko.github.io/logo-doks.png","width":512,"height":512,"caption":"Doks"},"image":{"@id":"https://eddienko.github.io/#/schema/image/1"}},{"@type":"WebSite","@id":"https://eddienko.github.io/#/schema/website/1","url":"https://eddienko.github.io/","name":"Owl","description":"Owl is a job scheduler that allows to submit user jobs to a Kubernetes from anywhere.","publisher":{"@id":"https://eddienko.github.io/#/schema/organization/1"}},{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/server/storage/","url":"https://eddienko.github.io/owl-pipeline/docs/server/storage/","name":"Storage","description":"","isPartOf":{"@id":"https://eddienko.github.io/#/schema/website/1"},"about":{"@id":"https://eddienko.github.io/#/schema/organization/1"},"datePublished":"2021-08-15T16:56:40CET","dateModified":"2021-08-15T16:56:40CET","breadcrumb":{"@id":"https://eddienko.github.io/owl-pipeline/docs/server/storage/#/schema/breadcrumb/1"},"primaryImageOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/server/storage/#/schema/image/2"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://eddienko.github.io/owl-pipeline/docs/server/storage/"]}]},{"@type":"BreadcrumbList","@id":"https://eddienko.github.io/owl-pipeline/docs/server/storage/#/schema/breadcrumb/1","name":"Breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/","url":"https://eddienko.github.io/owl-pipeline/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/","url":"https://eddienko.github.io/owl-pipeline/docs/","name":"Docs"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/server/","url":"https://eddienko.github.io/owl-pipeline/docs/server/","name":"Server"}},{"@type":"ListItem","position":4,"item":{"@id":"https://eddienko.github.io/owl-pipeline/docs/server/storage/"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://eddienko.github.io/#/schema/article/1","headline":"Storage","description":"","isPartOf":{"@id":"https://eddienko.github.io/owl-pipeline/docs/server/storage/"},"mainEntityOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/server/storage/"},"datePublished":"2021-08-15T16:56:40CET","dateModified":"2021-08-15T16:56:40CET","author":{"@id":"https://eddienko.github.io/#/schema/person/2"},"publisher":{"@id":"https://eddienko.github.io/#/schema/organization/1"},"image":{"@id":"https://eddienko.github.io/owl-pipeline/docs/server/storage/#/schema/image/2"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://eddienko.github.io/#/schema/person/2","name":"Henk Verlinde","sameAs":["https://twitter.com/henkverlinde","https://www.linkedin.com/in/henkverlinde/","https://github.com/h-enk"]}]},{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","@id":"https://eddienko.github.io/owl-pipeline/docs/server/storage/#/schema/image/2","url":"https://eddienko.github.io/owl-pipeline/doks.png","contentUrl":"https://eddienko.github.io/owl-pipeline/doks.png","caption":"Storage"}]}]}</script>
 <meta name=theme-color content="#fff">
 <link rel=apple-touch-icon sizes=180x180 href=https://eddienko.github.io/owl-pipeline/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://eddienko.github.io/owl-pipeline/favicon-32x32.png>
@@ -85,8 +85,8 @@ resources:threads: 10workers: 2memory: 10image: myrepo/customimage:tag ">
 <ul class=list-unstyled>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/install/>Install</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/configuration/>Configuration</a></li>
-<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/storage/>Storage</a></li>
-<li><a class="docs-link active" href=https://eddienko.github.io/owl-pipeline/docs/server/advanced/>Advanced</a></li>
+<li><a class="docs-link active" href=https://eddienko.github.io/owl-pipeline/docs/server/storage/>Storage</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/advanced/>Advanced</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/troubleshoot/>Troubleshooting</a></li>
 </ul>
 <h3>Owl Client</h3>
@@ -114,38 +114,33 @@ resources:threads: 10workers: 2memory: 10image: myrepo/customimage:tag ">
 <h3>On this page</h3>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#external-user-database>External user database</a></li>
-<li><a href=#custom-docker-image-for-pipelines>Custom Docker image for pipelines</a></li>
+<li><a href=#scheduler>Scheduler</a></li>
+<li><a href=#pipeline-jobs>Pipeline jobs</a></li>
 </ul>
 </nav>
 </div>
 </nav>
 <main class="docs-content col-lg-11 col-xl-9">
-<h1>Advanced</h1>
+<h1>Storage</h1>
 <p class=lead></p>
-<h2 id=external-user-database>External user database<a href=#external-user-database class=anchor aria-hidden=true>#</a> </h2>
-<p>TBD. It is possible to have the user database managed by an external application, e.g. a Django site.</p>
-<h2 id=custom-docker-image-for-pipelines>Custom Docker image for pipelines<a href=#custom-docker-image-for-pipelines class=anchor aria-hidden=true>#</a> </h2>
-<p>As part of the <code>resources</code> section of the pipeline definition file it is possible
-to specify a custom Docker image, e.g.:</p>
-<pre><code class=language-yaml>resources:
-  threads: 10
-  workers: 2
-  memory: 10
-  image: myrepo/customimage:tag
-</code></pre>
+<h2 id=scheduler>Scheduler<a href=#scheduler class=anchor aria-hidden=true>#</a> </h2>
+<p>By default a PVC is created that stores the SQLite database and logs from the pipelines. This is mounted
+in <code>/var/run/owl</code>.</p>
+<p>TBD.</p>
+<h2 id=pipeline-jobs>Pipeline jobs<a href=#pipeline-jobs class=anchor aria-hidden=true>#</a> </h2>
+<p>TBD.</p>
 <div class="docs-navigation d-flex justify-content-between">
-<a href=https://eddienko.github.io/owl-pipeline/docs/server/storage/>
+<a href=https://eddienko.github.io/owl-pipeline/docs/server/configuration/>
 <div class="card my-1">
 <div class="card-body py-2">
-&larr; Storage
+&larr; Configuration
 </div>
 </div>
 </a>
-<a class=ms-auto href=https://eddienko.github.io/owl-pipeline/docs/server/troubleshoot/>
+<a class=ms-auto href=https://eddienko.github.io/owl-pipeline/docs/server/advanced/>
 <div class="card my-1">
 <div class="card-body py-2">
-Troubleshooting &rarr;
+Advanced &rarr;
 </div>
 </div>
 </a>

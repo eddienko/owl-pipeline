@@ -1,0 +1,218 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<link rel=preload as=font href=https://eddienko.github.io/owl-pipeline/fonts/vendor/jost/jost-v4-latin-regular.woff2 type=font/woff2 crossorigin>
+<link rel=preload as=font href=https://eddienko.github.io/owl-pipeline/fonts/vendor/jost/jost-v4-latin-700.woff2 type=font/woff2 crossorigin>
+<link rel=stylesheet href=https://eddienko.github.io/owl-pipeline/main.9ef6ffdac4004472a8e3341ed68bc2872548c67ae515c368eb0e3b0468bc8872ab639ea418e0c0eafca8b7006e19925e0ccd790b8dd3a3226ee7570ea14d6f6d.css integrity="sha512-nvb/2sQARHKo4zQe1ovChyVIxnrlFcNo6w47BGi8iHKrY56kGODA6vyotwBuGZJeDM15C43ToyJu51cOoU1vbQ==" crossorigin=anonymous>
+<link rel=stylesheet href=https://eddienko.github.io/owl-pipeline/css/custom.css>
+<noscript>
+<style>img.lazyload{display:none}</style>
+</noscript>
+<meta name=robots content="index, follow">
+<meta name=googlebot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name=bingbot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<title>Architecture - Owl</title>
+<meta name=description content="Owl is a job scheduler that allows to submit user jobs to a Kubernetes from anywhere.">
+<link rel=canonical href=https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/>
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Architecture">
+<meta property="og:description" content="Introduction A job scheduler is an application that takes care of running unattended jobs in a compute cluster. Typically the scheduler will add jobs to a queue and run them when resources become available. Some widely used schedulers (mainly in HPC context) are Portable Batch System (PBS), Slurm Workload Manager, Condor, Moab, and many others.
+In the context of cloud systems and in particular Kubernetes there is not a wide range of applications to run user submitted batch jobs.">
+<meta property="og:url" content="https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/">
+<meta property="og:site_name" content="Owl">
+<meta property="article:published_time" content="2021-08-16T08:07:35+01:00">
+<meta property="article:modified_time" content="2021-08-16T08:07:35+01:00">
+<meta property="og:image" content="https://eddienko.github.io/owl-pipeline/doks.png">
+<meta property="og:image:alt" content="Owl">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@getdoks">
+<meta name=twitter:creator content="@henkverlinde">
+<meta name=twitter:title content="Architecture">
+<meta name=twitter:description content>
+<meta name=twitter:image content="https://eddienko.github.io/owl-pipeline/doks.png">
+<meta name=twitter:image:alt content="Architecture">
+<script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://eddienko.github.io/#/schema/organization/1","name":"Doks","url":"https://eddienko.github.io/","sameAs":["https://twitter.com/getdoks","https://github.com/h-enk/doks"],"logo":{"@type":"ImageObject","@id":"https://eddienko.github.io/#/schema/image/1","url":"https://eddienko.github.io/logo-doks.png","width":512,"height":512,"caption":"Doks"},"image":{"@id":"https://eddienko.github.io/#/schema/image/1"}},{"@type":"WebSite","@id":"https://eddienko.github.io/#/schema/website/1","url":"https://eddienko.github.io/","name":"Owl","description":"Owl is a job scheduler that allows to submit user jobs to a Kubernetes from anywhere.","publisher":{"@id":"https://eddienko.github.io/#/schema/organization/1"}},{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/","url":"https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/","name":"Architecture","description":"","isPartOf":{"@id":"https://eddienko.github.io/#/schema/website/1"},"about":{"@id":"https://eddienko.github.io/#/schema/organization/1"},"datePublished":"2021-08-16T08:07:35CET","dateModified":"2021-08-16T08:07:35CET","breadcrumb":{"@id":"https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/#/schema/breadcrumb/1"},"primaryImageOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/#/schema/image/2"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/"]}]},{"@type":"BreadcrumbList","@id":"https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/#/schema/breadcrumb/1","name":"Breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/","url":"https://eddienko.github.io/owl-pipeline/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/","url":"https://eddienko.github.io/owl-pipeline/docs/","name":"Docs"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/prologue/","url":"https://eddienko.github.io/owl-pipeline/docs/prologue/","name":"Prologue"}},{"@type":"ListItem","position":4,"item":{"@id":"https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://eddienko.github.io/#/schema/article/1","headline":"Architecture","description":"","isPartOf":{"@id":"https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/"},"mainEntityOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/"},"datePublished":"2021-08-16T08:07:35CET","dateModified":"2021-08-16T08:07:35CET","author":{"@id":"https://eddienko.github.io/#/schema/person/2"},"publisher":{"@id":"https://eddienko.github.io/#/schema/organization/1"},"image":{"@id":"https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/#/schema/image/2"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://eddienko.github.io/#/schema/person/2","name":"Henk Verlinde","sameAs":["https://twitter.com/henkverlinde","https://www.linkedin.com/in/henkverlinde/","https://github.com/h-enk"]}]},{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","@id":"https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/#/schema/image/2","url":"https://eddienko.github.io/owl-pipeline/doks.png","contentUrl":"https://eddienko.github.io/owl-pipeline/doks.png","caption":"Architecture"}]}]}</script>
+<meta name=theme-color content="#fff">
+<link rel=apple-touch-icon sizes=180x180 href=https://eddienko.github.io/owl-pipeline/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=https://eddienko.github.io/owl-pipeline/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=https://eddienko.github.io/owl-pipeline/favicon-16x16.png>
+<link rel=manifest crossorigin=use-credentials href=https://eddienko.github.io/owl-pipeline/site.webmanifest>
+</head>
+<body class="docs single">
+<div class="header-bar fixed-top"></div>
+<header class="navbar fixed-top navbar-expand-md navbar-light">
+<div class=container>
+<input class="menu-btn order-0" type=checkbox id=menu-btn>
+<label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label>
+<a class="navbar-brand order-1 order-md-0 me-auto" href=https://eddienko.github.io/owl-pipeline/>Owl</a>
+<button id=mode class="btn btn-link order-2 order-md-4" type=button aria-label="Toggle mode">
+<span class=toggle-dark><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span>
+<span class=toggle-light><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+</button>
+<ul class="navbar-nav social-nav order-3 order-md-5">
+<li class=nav-item>
+<a class=nav-link href=https://github.com/eddienko/owl-pipeline-server><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg><span class="ms-2 visually-hidden">GitHub</span></a>
+</li>
+</ul>
+<div class="collapse navbar-collapse order-4 order-md-1">
+<ul class="navbar-nav main-nav me-auto order-5 order-md-2"><li class="nav-item active">
+<a class=nav-link href=https://eddienko.github.io/owl-pipeline/docs/prologue/introduction/>Docs</a>
+</li>
+</ul>
+<div class="break order-6 d-md-none"></div>
+<form class="navbar-form flex-grow-1 order-7 order-md-3">
+<input id=userinput class="form-control is-search" type=search placeholder="Search docs..." aria-label="Search docs..." autocomplete=off>
+<div id=suggestions class="shadow bg-white rounded"></div>
+</form>
+</div>
+</div>
+</header>
+<div class="wrap container" role=document>
+<div class=content>
+<div class="row flex-xl-nowrap">
+<div class="col-lg-5 col-xl-4 docs-sidebar">
+<nav class=docs-links aria-label="Main navigation">
+<h3>Owl Scheduler</h3>
+<ul class=list-unstyled>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/prologue/introduction/>Introduction</a></li>
+<li><a class="docs-link active" href=https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/>Architecture</a></li>
+</ul>
+<h3>Owl Server</h3>
+<ul class=list-unstyled>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/install/>Install</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/configuration/>Configuration</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/storage/>Storage</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/advanced/>Advanced</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/troubleshoot/>Troubleshooting</a></li>
+</ul>
+<h3>Owl Client</h3>
+<ul class=list-unstyled>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/install/>Quick Start</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/commands/>User Commands</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/admin/>Admin Commands</a></li>
+</ul>
+<h3>Pipelines</h3>
+<ul class=list-unstyled>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/>Owl Pipelines</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/>Pipeline Signatures</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/development/>Creating Pipelines</a></li>
+</ul>
+<h3>Help</h3>
+<ul class=list-unstyled>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/help/how-to-contribute/>How to Contribute</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/help/troubleshooting/>Troubleshooting</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/help/faq/>FAQ</a></li>
+</ul>
+</nav>
+</div>
+<nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
+<div class=page-links>
+<h3>On this page</h3>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#introduction>Introduction</a></li>
+<li><a href=#pipeline-definition-file>Pipeline definition file</a></li>
+<li><a href=#job-lifecycle>Job Lifecycle</a></li>
+</ul>
+</nav>
+</div>
+</nav>
+<main class="docs-content col-lg-11 col-xl-9">
+<h1>Architecture</h1>
+<p class=lead></p>
+<h2 id=introduction>Introduction<a href=#introduction class=anchor aria-hidden=true>#</a> </h2>
+<p>A job scheduler is an application that takes care of running unattended jobs in
+a compute cluster. Typically the scheduler will add jobs to a queue and run them
+when resources become available. Some widely used schedulers (mainly in HPC
+context) are Portable Batch System (PBS), Slurm Workload Manager, Condor, Moab,
+and many others.</p>
+<p>In the context of cloud systems and in particular Kubernetes there is not a wide
+range of applications to run user submitted batch jobs. For our use such an
+application should be:</p>
+<ul>
+<li><strong>Easy to use.</strong> Users should not be expected to know how the cluster is set up. A simple specification of how many CPUs and RAM should suffice in first instance with flexibility for more complex scheduling options.</li>
+<li><strong>Remote access.</strong> Users should be able to submit, monitor and manage jobs from their own laptop or desktop without the need to login to a remote host.</li>
+<li><strong>Dask support.</strong> It should support Dask jobs, but not exclusively.</li>
+<li><strong>Integration with Kubernetes.</strong> The scheduler needs to create services and deployments in the K8s cluster, run jobs and, plug into external components (e.g. Django authentication) and interact with the database.</li>
+</ul>
+<p>For this purpose we have built the Owl job scheduler from scratch. Owl is a
+framework to execute jobs in a compute cluster backed up by Kubernetes and Dask.
+In essence Owl serves as very simple scheduler that accepts job descriptions,
+queues them and submits them for execution keeping track of progress.</p>
+<h2 id=pipeline-definition-file>Pipeline definition file<a href=#pipeline-definition-file class=anchor aria-hidden=true>#</a> </h2>
+<p>When we refer to pipelines we understand parameterized jobs. The typical user chooses which pipeline to run from
+those available in the system and submits a job with its own particular parameters. To do that the user
+only needs to write a <strong>pipeline definition file (PDeF)</strong> which includes the name of the pipeline to run,
+the arguments needed to run it and a request for resources.</p>
+<h2 id=job-lifecycle>Job Lifecycle<a href=#job-lifecycle class=anchor aria-hidden=true>#</a> </h2>
+<p>In order to run a particular job (pipeline) users write a pipeline definition
+file, in summary, a file that specifies the pipeline to run and the arguments required
+for it to run as well as the compute resources required.</p>
+<p>This is submitted to the Owl API who logs the entry in a
+database and places the job in a queue. Owl checks periodically for pipelines in
+the queue and if they meet the scheduling requirements starts the allocation
+process. The main Owl process (a.k.a. Owl Scheduler) delegates the reponsibility
+of running the pipeline to a pipeline worker Pod process that is in charge of
+contacting the K8s cluster, allocating the resources neeed and submitting the
+pipeline to the compute cluster.</p>
+<p>Depending on the pipeline requested resources, one or more containers running
+Dask are allocated across the cluster and the pipeline starts execution. The
+Worker keeps communication with the running pipeline at all times. When
+finished, or in case of error, informs Owl who retrieves the information from
+the Worker, stops it and contacts the API for a database update.</p>
+<p>The steps followed when running a pipeline are:</p>
+<ul>
+<li>The user submits a pipeline definition file that is a YAML text file.</li>
+<li>The database is updated with the pipeline request. The scheduler queries the database when slots are available and allocates pipelines.</li>
+<li>The Owl scheduler starts a pipeline worker in a Pod sending the pipeline definition file and extra configuration needed.</li>
+<li>The pipeline worker loads the pipeline code from the pip repository and validates inputs against its schema.</li>
+<li>The Kubernetes cluster starts the requested number of Pod Dask workers.</li>
+<li>The pipeline worker starts a separate thread and runs the pipeline code. The code runs in the allocated containers using Dask taking advantage of parallelization over all workers.</li>
+<li>The main pipeline thread listens for heartbeat connections from the scheduler and waits for pipeline completion.</li>
+<li>The pipeline worker responds with the pipeline completion result to the scheduler.</li>
+<li>The scheduler stops the pipeline worker and logs an entry in the database.</li>
+</ul>
+<div class="docs-navigation d-flex justify-content-between">
+<a href=https://eddienko.github.io/owl-pipeline/docs/prologue/introduction/>
+<div class="card my-1">
+<div class="card-body py-2">
+&larr; Introduction
+</div>
+</div>
+</a>
+<a class=ms-auto href=https://eddienko.github.io/owl-pipeline/docs/server/install/>
+<div class="card my-1">
+<div class="card-body py-2">
+Install &rarr;
+</div>
+</div>
+</a>
+</div>
+</main>
+</div>
+</div>
+</div>
+<footer class="footer text-muted">
+<div class=container>
+<div class=row>
+<div class="col-lg-8 order-last order-lg-first">
+<ul class=list-inline>
+<li class=list-inline-item></li>
+</ul>
+</div>
+<div class="col-lg-8 order-first order-lg-last text-lg-end">
+<ul class=list-inline>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+<script src=https://eddienko.github.io/owl-pipeline/js/bootstrap.min.586171fec3966d1a44fa8aa2edb24b861dc3a72be8cc24aa4e0dabe4c312a0dae5fe1eaa7c93180a6211fa4d7c5461b0d228fdf741be2eae279a376dfa1e7d81.js integrity="sha512-WGFx/sOWbRpE+oqi7bJLhh3DpyvozCSqTg2r5MMSoNrl/h6qfJMYCmIR+k18VGGw0ij990G+Lq4nmjdt+h59gQ==" crossorigin=anonymous defer></script>
+<script src=https://eddienko.github.io/owl-pipeline/js/highlight.min.b7fe51cfee4d403e67d61ca560f9e4854f9786459a26219d149ba72fd88c3a0fed5c687649c151a0686a9b0bf492d5ec9b6b77b426979e63fc767315eeca3a3e.js integrity="sha512-t/5Rz+5NQD5n1hylYPnkhU+XhkWaJiGdFJunL9iMOg/tXGh2ScFRoGhqmwv0ktXsm2t3tCaXnmP8dnMV7so6Pg==" crossorigin=anonymous defer></script>
+<script src=https://eddienko.github.io/owl-pipeline/main.min.9e62c9b0c5dc8279689cc9cb693a32c8ea1d19032f574f98c782ff59a0417d3662ff94b1a7755ab72a7a1862644bf00a58492c65aa0adabbc58080f4018c61bc.js integrity="sha512-nmLJsMXcgnlonMnLaToyyOodGQMvV0+Yx4L/WaBBfTZi/5Sxp3Vatyp6GGJkS/AKWEksZaoK2rvFgID0AYxhvA==" crossorigin=anonymous defer></script>
+<script src=https://eddienko.github.io/owl-pipeline/index.min.c951d8bc0afe164c3e8b07e44dece754609e21b596b5ef1d192cbe6e93666c82da8a76f914318f7ca7e45e1dec708e141230ac36a20e5a812505ac5ee9663465.js integrity="sha512-yVHYvAr+Fkw+iwfkTeznVGCeIbWWte8dGSy+bpNmbILainb5FDGPfKfkXh3scI4UEjCsNqIOWoElBaxe6WY0ZQ==" crossorigin=anonymous defer></script>
+</body>
+</html>

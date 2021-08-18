@@ -20,8 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Configuration">
 <meta property="og:description" content="Admin password On the first launch the database schema is created and a defaul random admin password created. You can recover the default password using:
-POD_NAME=$(kubectl get pods --namespace owl -l &#34;app.kubernetes.io/name=owl-scheduler,app.kubernetes.io/instance=owl&#34; -o jsonpath=&#34;{.items[0].metadata.name}&#34;)ADMIN_PASSWORD=$(kubectl exec $POD_NAME -- cat /var/run/owl/adminPassword)echo $ADMIN_PASSWORD Use the password to login and change the admin password:
-# Use the initial passwordowl login# Update the passwordowl admin user update --admin admin yourNewPassword# Login with the new passwordowl login New users can be added with">
+POD_NAME=$(kubectl get pods --namespace owl -l &#34;app.kubernetes.io/name=owl-scheduler,app.kubernetes.io/instance=owl&#34; -o jsonpath=&#34;{.items[0].metadata.name}&#34;)ADMIN_PASSWORD=$(kubectl exec $POD_NAME -- cat /var/run/owl/adminPassword)echo $ADMIN_PASSWORD Command line Pod Run a Owl Client command line Pod in the server or install the Owl Client for remote access (this assumes the API is available remotely).">
 <meta property="og:url" content="https://eddienko.github.io/owl-pipeline/docs/server/configuration/">
 <meta property="og:site_name" content="Owl">
 <meta property="article:published_time" content="2021-08-15T16:56:40+01:00">
@@ -79,22 +78,26 @@ POD_NAME=$(kubectl get pods --namespace owl -l &#34;app.kubernetes.io/name=owl-s
 <h3>Owl Scheduler</h3>
 <ul class=list-unstyled>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/prologue/introduction/>Introduction</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/>Architecture</a></li>
 </ul>
 <h3>Owl Server</h3>
 <ul class=list-unstyled>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/install/>Install</a></li>
 <li><a class="docs-link active" href=https://eddienko.github.io/owl-pipeline/docs/server/configuration/>Configuration</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/storage/>Storage</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/advanced/>Advanced</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/troubleshoot/>Troubleshooting</a></li>
 </ul>
 <h3>Owl Client</h3>
 <ul class=list-unstyled>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/install/>Quick Start</a></li>
-<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/commands/>Commands</a></li>
-<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/admin/>Admin</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/commands/>User Commands</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/admin/>Admin Commands</a></li>
 </ul>
 <h3>Pipelines</h3>
 <ul class=list-unstyled>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/>Owl Pipelines</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/>Pipeline Signatures</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/development/>Creating Pipelines</a></li>
 </ul>
 <h3>Help</h3>
@@ -111,7 +114,11 @@ POD_NAME=$(kubectl get pods --namespace owl -l &#34;app.kubernetes.io/name=owl-s
 <nav id=TableOfContents>
 <ul>
 <li><a href=#admin-password>Admin password</a></li>
+<li><a href=#command-line-pod>Command line Pod</a></li>
+<li><a href=#update-admin-password>Update admin password</a></li>
 <li><a href=#add-pipeline-signatures>Add pipeline signatures</a></li>
+<li><a href=#submit-your-first-pipeline>Submit your first pipeline</a></li>
+<li><a href=#query-pipeline-status>Query pipeline status</a></li>
 </ul>
 </nav>
 </div>
@@ -126,6 +133,19 @@ default password using:</p>
 ADMIN_PASSWORD=$(kubectl exec $POD_NAME -- cat /var/run/owl/adminPassword)
 echo $ADMIN_PASSWORD
 </code></pre>
+<h2 id=command-line-pod>Command line Pod<a href=#command-line-pod class=anchor aria-hidden=true>#</a> </h2>
+<p>Run a Owl Client command line Pod in the server or install the Owl Client
+for remote access (this assumes the API is available remotely). In the first case run the Pod:</p>
+<pre><code class=language-bash>kubectl apply --namespace owl -f https://git.io/J0lsu
+</code></pre>
+<p>and when ready start a command line prompt:</p>
+<pre><code class=language-bash>kubectl exec -it owlcli --namespace owl -- /bin/bash
+</code></pre>
+<p>An alternative is to install the <a href=https://eddienko.github.io/owl-pipeline/docs/client/install/>Owl Client</a> and define
+an environmental variable pointing to the location of the API:</p>
+<pre><code class=language-bash>export OWL_API_URL=https://api.owl.com
+</code></pre>
+<h2 id=update-admin-password>Update admin password<a href=#update-admin-password class=anchor aria-hidden=true>#</a> </h2>
 <p>Use the password to login and change the admin password:</p>
 <pre><code class=language-bash># Use the initial password
 owl login
@@ -136,12 +156,10 @@ owl admin user update --admin admin yourNewPassword
 # Login with the new password
 owl login
 </code></pre>
-<p>New users can be added with</p>
-<pre><code class=language-bash>owl admin user add [--admin] username password
-</code></pre>
 <h2 id=add-pipeline-signatures>Add pipeline signatures<a href=#add-pipeline-signatures class=anchor aria-hidden=true>#</a> </h2>
 <pre><code class=language-bash># Example pipeline
-owl admin pdef add http://.....
+curl -O http://somewhere.com/example.yaml
+owl admin pdef add example.yaml
 </code></pre>
 <p>Check that they available:</p>
 <pre><code class=language-bash># List all signatures
@@ -149,6 +167,16 @@ owl pdef list
 
 # Get pipeline definition for example pipeline
 owl pdef get example
+</code></pre>
+<h2 id=submit-your-first-pipeline>Submit your first pipeline<a href=#submit-your-first-pipeline class=anchor aria-hidden=true>#</a> </h2>
+<p>Retrieve the <code>example</code> pipeline definition file:</p>
+<pre><code class=language-bash>owl pdef get example -o example.yaml
+</code></pre>
+<p>Change the parameters or resources and submit it with:</p>
+<pre><code class=language-bash>owl submit example.yaml
+</code></pre>
+<h2 id=query-pipeline-status>Query pipeline status<a href=#query-pipeline-status class=anchor aria-hidden=true>#</a> </h2>
+<pre><code class=language-bash>owl status get 1
 </code></pre>
 <div class="docs-navigation d-flex justify-content-between">
 <a href=https://eddienko.github.io/owl-pipeline/docs/server/install/>
@@ -158,10 +186,10 @@ owl pdef get example
 </div>
 </div>
 </a>
-<a class=ms-auto href=https://eddienko.github.io/owl-pipeline/docs/server/advanced/>
+<a class=ms-auto href=https://eddienko.github.io/owl-pipeline/docs/server/storage/>
 <div class="card my-1">
 <div class="card-body py-2">
-Advanced &rarr;
+Storage &rarr;
 </div>
 </div>
 </a>
@@ -188,6 +216,6 @@ Advanced &rarr;
 <script src=https://eddienko.github.io/owl-pipeline/js/bootstrap.min.586171fec3966d1a44fa8aa2edb24b861dc3a72be8cc24aa4e0dabe4c312a0dae5fe1eaa7c93180a6211fa4d7c5461b0d228fdf741be2eae279a376dfa1e7d81.js integrity="sha512-WGFx/sOWbRpE+oqi7bJLhh3DpyvozCSqTg2r5MMSoNrl/h6qfJMYCmIR+k18VGGw0ij990G+Lq4nmjdt+h59gQ==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/js/highlight.min.b7fe51cfee4d403e67d61ca560f9e4854f9786459a26219d149ba72fd88c3a0fed5c687649c151a0686a9b0bf492d5ec9b6b77b426979e63fc767315eeca3a3e.js integrity="sha512-t/5Rz+5NQD5n1hylYPnkhU+XhkWaJiGdFJunL9iMOg/tXGh2ScFRoGhqmwv0ktXsm2t3tCaXnmP8dnMV7so6Pg==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/main.min.9e62c9b0c5dc8279689cc9cb693a32c8ea1d19032f574f98c782ff59a0417d3662ff94b1a7755ab72a7a1862644bf00a58492c65aa0adabbc58080f4018c61bc.js integrity="sha512-nmLJsMXcgnlonMnLaToyyOodGQMvV0+Yx4L/WaBBfTZi/5Sxp3Vatyp6GGJkS/AKWEksZaoK2rvFgID0AYxhvA==" crossorigin=anonymous defer></script>
-<script src=https://eddienko.github.io/owl-pipeline/index.min.9e944e635b03450d3c38687300f56f25b2875c5a967609d2a832748b7bc321d8b11d4ce5ffb70827d7338c84b9a34258c7cb7f8434c232ecfcb67091fed8ac95.js integrity="sha512-npROY1sDRQ08OGhzAPVvJbKHXFqWdgnSqDJ0i3vDIdixHUzl/7cIJ9czjIS5o0JYx8t/hDTCMuz8tnCR/tislQ==" crossorigin=anonymous defer></script>
+<script src=https://eddienko.github.io/owl-pipeline/index.min.c951d8bc0afe164c3e8b07e44dece754609e21b596b5ef1d192cbe6e93666c82da8a76f914318f7ca7e45e1dec708e141230ac36a20e5a812505ac5ee9663465.js integrity="sha512-yVHYvAr+Fkw+iwfkTeznVGCeIbWWte8dGSy+bpNmbILainb5FDGPfKfkXh3scI4UEjCsNqIOWoElBaxe6WY0ZQ==" crossorigin=anonymous defer></script>
 </body>
 </html>

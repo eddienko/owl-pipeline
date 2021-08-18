@@ -19,8 +19,8 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Install">
-<meta property="og:description" content="👉 Throughout this documentation we assume that Helm 3 is used. Add the Helm repository helm repo add owl https://eddienko.github.io/owl-pipeline-server/helm repo update Install the chart The Owl chart bootstraps the Owl Scheduler on Kubernetes using the Helm package manager. The chart deploys the following components on the Kubernetes cluster:
- Owl Scheduler Owl API  helm install owl owl/owl \ -n owl --create-namespace -f values.yaml Where values.">
+<meta property="og:description" content="👉 Throughout this documentation we assume that you have a Kubernetes cluster already spin up and the control panel is reachable using command line tools. Helm 3 is used. Add the Helm repository If you have not done so, install Helm. Then add the repository that contains the Owl chart:
+helm repo add owl https://eddienko.github.io/owl-pipeline-server/helm repo update Install the chart The Owl chart bootstraps the Owl Scheduler on Kubernetes using the Helm package manager.">
 <meta property="og:url" content="https://eddienko.github.io/owl-pipeline/docs/server/install/">
 <meta property="og:site_name" content="Owl">
 <meta property="article:published_time" content="2021-08-15T16:56:40+01:00">
@@ -78,22 +78,26 @@
 <h3>Owl Scheduler</h3>
 <ul class=list-unstyled>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/prologue/introduction/>Introduction</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/>Architecture</a></li>
 </ul>
 <h3>Owl Server</h3>
 <ul class=list-unstyled>
 <li><a class="docs-link active" href=https://eddienko.github.io/owl-pipeline/docs/server/install/>Install</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/configuration/>Configuration</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/storage/>Storage</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/advanced/>Advanced</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/troubleshoot/>Troubleshooting</a></li>
 </ul>
 <h3>Owl Client</h3>
 <ul class=list-unstyled>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/install/>Quick Start</a></li>
-<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/commands/>Commands</a></li>
-<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/admin/>Admin</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/commands/>User Commands</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/admin/>Admin Commands</a></li>
 </ul>
 <h3>Pipelines</h3>
 <ul class=list-unstyled>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/>Owl Pipelines</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/>Pipeline Signatures</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/development/>Creating Pipelines</a></li>
 </ul>
 <h3>Help</h3>
@@ -111,6 +115,9 @@
 <ul>
 <li><a href=#add-the-helm-repository>Add the Helm repository</a></li>
 <li><a href=#install-the-chart>Install the chart</a></li>
+<li><a href=#inspect-the-deployment-status>Inspect the deployment status</a></li>
+<li><a href=#expose-the-api-service>Expose the API service</a></li>
+<li><a href=#deployment-in-gke>Deployment in GKE</a></li>
 </ul>
 </nav>
 </div>
@@ -120,9 +127,11 @@
 <p class=lead></p>
 <div class="alert alert-warning d-flex" role=alert>
 <div class="flex-shrink-1 alert-icon">👉 </div>
-<div class=w-100>Throughout this documentation we assume that Helm 3 is used. </div>
+<div class=w-100>Throughout this documentation we assume that you have a Kubernetes cluster already spin up and the control panel is reachable using command line tools. Helm 3 is used. </div>
 </div>
 <h2 id=add-the-helm-repository>Add the Helm repository<a href=#add-the-helm-repository class=anchor aria-hidden=true>#</a> </h2>
+<p>If you have not done so, install <a href=https://helm.sh/docs/intro/install/>Helm</a>. Then add the repository
+that contains the Owl chart:</p>
 <pre><code class=language-bash>helm repo add owl https://eddienko.github.io/owl-pipeline-server/
 helm repo update
 </code></pre>
@@ -136,118 +145,76 @@ The chart deploys the following components on the Kubernetes cluster:</p>
 <pre><code class=language-bash>helm install owl owl/owl \ 
       -n owl --create-namespace -f values.yaml
 </code></pre>
-<p>Where <code>values.yaml</code> is a YAML file containing local configuration details.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>image.repository</td>
-<td>name of the Docker image to use to run the server</td>
-<td>imaxt/owl-server</td>
-</tr>
-<tr>
-<td>image.pullPolicy</td>
-<td>pull policy</td>
-<td>IfNotExists</td>
-</tr>
-<tr>
-<td>image.tag</td>
-<td>image tag</td>
-<td>latest</td>
-</tr>
-<tr>
-<td>token</td>
-<td>secret token used in the communication between the Owl scheduler and the API</td>
-<td></td>
-</tr>
-<tr>
-<td>loglevel</td>
-<td>default log level</td>
-<td>INFO</td>
-</tr>
-<tr>
-<td>dbi</td>
-<td>database connection string</td>
-<td></td>
-</tr>
-<tr>
-<td>resources.limits.cpu</td>
-<td></td>
-<td>2</td>
-</tr>
-<tr>
-<td>resources.limits.memory</td>
-<td></td>
-<td>7G</td>
-</tr>
-<tr>
-<td>resources.requests.cpu</td>
-<td></td>
-<td>2</td>
-</tr>
-<tr>
-<td>resources.requests.memory</td>
-<td></td>
-<td>7G</td>
-</tr>
-<tr>
-<td>pipeline.extraVolumes</td>
-<td></td>
-<td>{}</td>
-</tr>
-<tr>
-<td>pipeline.extraVolumeMounts</td>
-<td></td>
-<td>{}</td>
-</tr>
-</tbody>
-</table>
-<p>An example <code>values.yaml</code> file:</p>
-<pre><code class=language-yaml>image:
+<p>This creates a namespace called <code>owl</code> if it does not exist and deploys all components there.
+Here <code>values.yaml</code> is a YAML file containing local configuration details.
+A minimal example <code>values.yaml</code> file:</p>
+<pre><code class=language-yaml># Name of Docker image used to run the server
+image:
   repository: imaxt/owl-server
-  pullPolicy: Always
-  tag: &quot;latest&quot;
+  pullPolicy: IfNotPresent
+  tag: &quot;0.6.1&quot;
 
+# Create service account in RBAC clusters
 serviceAccount:
   create: true
 
-token: &quot;fdsf698dfsdfhsdfkjhfsdfy&quot;
+# Secret token for communication between the Owl scheduler and the API
+token: &quot;hdCI6MTYyOTI5NTczM30.tWSY38h7HfhtAnMkVJWf9gF-fU_EHCTB7zrar3QyLiA&quot;
+
+# Global log level
 loglevel: DEBUG
+
+# Database DBI
 dbi: sqlite:////var/run/owl/sqlite.db
-
-resources:
-  limits:
-    cpu: 2
-    memory: 7G
-  requests:
-    cpu: 2
-    memory: 7G
-
-pipeline:
-  extraVolumeMounts:
-    - name: meds1a
-      mountPath: /data/meds1_a
-  extraVolumes:
-    - name: meds1a
-      hostPath:
-        path: /data/meds1_a
-        type: Directory
-
-dask: {}
-scheduler: {}
-api: {}
 </code></pre>
+<p>More complete examples can be found in the
+<a href=https://github.com/eddienko/owl-pipeline-server/blob/main/examples>repository</a>.</p>
+<h2 id=inspect-the-deployment-status>Inspect the deployment status<a href=#inspect-the-deployment-status class=anchor aria-hidden=true>#</a> </h2>
+<p>After deployment, you should have two pods running coallocated in the same node
+(in the default deployment both pods share the same PVC). The first pod is
+the Owl API which is used to query the database and allow for external interaction,
+i.e. to submit and manage jobs. The second pod, the scheduler, queries the
+API for submitted jobs and schedules them in the cluster.</p>
+<pre><code class=language-bash>$ kubectl get all --namespace owl
+NAME                                 READY   STATUS    RESTARTS   AGE
+pod/owl-api-7cd474c655-9s887         1/1     Running   0          18m
+pod/owl-scheduler-7996ff7f76-ktgfp   1/1     Running   0          22m
+
+NAME                        TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)             AGE
+service/owl-api             LoadBalancer   10.4.15.167   34.88.233.217   8002:30923/TCP      3h36m
+service/owl-scheduler       ClusterIP      10.4.7.4      &lt;none&gt;          7001/TCP,7002/TCP   3h36m
+
+NAME                            READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/owl-api         1/1     1            1           95m
+deployment.apps/owl-scheduler   1/1     1            1           95m
+
+NAME                                       DESIRED   CURRENT   READY   AGE
+replicaset.apps/owl-api-7cd474c655         1         1         1       95m
+replicaset.apps/owl-scheduler-7996ff7f76   1         1         1       55m
+</code></pre>
+<p>A common reason that pods stay in <code>pending</code> is the lack of resources. Make sure that at least one
+node has resources to schedule both pods. In any case
+<code>kubectl describe pod [name-of-the-pod] --namespace owl</code> should give the cause.</p>
+<h2 id=expose-the-api-service>Expose the API service<a href=#expose-the-api-service class=anchor aria-hidden=true>#</a> </h2>
+<p>The API service is exposed using a LoadBalancer. The external IP can be obtained either looking
+at the output from the command above or directly using:</p>
+<pre><code class=language-bash>kubectl get services --namespace owl \
+ -l &quot;app.kubernetes.io/name=owl-api,app.kubernetes.io/instance=owl&quot; \
+ -o jsonpath=&quot;{.items[0].status.loadBalancer.ingress[0].ip}&quot;
+</code></pre>
+<p>The address of the API server is then <code>http://34.88.233.217:8002</code>. Exposing this to the outside
+world can be also accomplished with a default ingress or using traefik. For reference this is a traefik
+deployment to make the API available in a subpath
+<a href=https://github.com/eddienko/owl-pipeline-server/blob/main/examples/imaxt/ingress.yaml>ingress.yaml</a>.</p>
+<h2 id=deployment-in-gke>Deployment in GKE<a href=#deployment-in-gke class=anchor aria-hidden=true>#</a> </h2>
+<p>In Google Kubernetes Engine the cluster created with GKE Autopilot is not yet supported. Use a standard GKE cluster instead with (some) nodes using at least the <code>e2-standard-4</code> type.</p>
+<p>An example values file for deploying the Helm chart in GKE is available from
+<a href=https://github.com/eddienko/owl-pipeline-server/blob/main/examples/gce/values.yaml>values.yaml</a>.</p>
 <div class="docs-navigation d-flex justify-content-between">
-<a href=https://eddienko.github.io/owl-pipeline/docs/prologue/introduction/>
+<a href=https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/>
 <div class="card my-1">
 <div class="card-body py-2">
-&larr; Introduction
+&larr; Architecture
 </div>
 </div>
 </a>
@@ -281,6 +248,6 @@ Configuration &rarr;
 <script src=https://eddienko.github.io/owl-pipeline/js/bootstrap.min.586171fec3966d1a44fa8aa2edb24b861dc3a72be8cc24aa4e0dabe4c312a0dae5fe1eaa7c93180a6211fa4d7c5461b0d228fdf741be2eae279a376dfa1e7d81.js integrity="sha512-WGFx/sOWbRpE+oqi7bJLhh3DpyvozCSqTg2r5MMSoNrl/h6qfJMYCmIR+k18VGGw0ij990G+Lq4nmjdt+h59gQ==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/js/highlight.min.b7fe51cfee4d403e67d61ca560f9e4854f9786459a26219d149ba72fd88c3a0fed5c687649c151a0686a9b0bf492d5ec9b6b77b426979e63fc767315eeca3a3e.js integrity="sha512-t/5Rz+5NQD5n1hylYPnkhU+XhkWaJiGdFJunL9iMOg/tXGh2ScFRoGhqmwv0ktXsm2t3tCaXnmP8dnMV7so6Pg==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/main.min.9e62c9b0c5dc8279689cc9cb693a32c8ea1d19032f574f98c782ff59a0417d3662ff94b1a7755ab72a7a1862644bf00a58492c65aa0adabbc58080f4018c61bc.js integrity="sha512-nmLJsMXcgnlonMnLaToyyOodGQMvV0+Yx4L/WaBBfTZi/5Sxp3Vatyp6GGJkS/AKWEksZaoK2rvFgID0AYxhvA==" crossorigin=anonymous defer></script>
-<script src=https://eddienko.github.io/owl-pipeline/index.min.9e944e635b03450d3c38687300f56f25b2875c5a967609d2a832748b7bc321d8b11d4ce5ffb70827d7338c84b9a34258c7cb7f8434c232ecfcb67091fed8ac95.js integrity="sha512-npROY1sDRQ08OGhzAPVvJbKHXFqWdgnSqDJ0i3vDIdixHUzl/7cIJ9czjIS5o0JYx8t/hDTCMuz8tnCR/tislQ==" crossorigin=anonymous defer></script>
+<script src=https://eddienko.github.io/owl-pipeline/index.min.c951d8bc0afe164c3e8b07e44dece754609e21b596b5ef1d192cbe6e93666c82da8a76f914318f7ca7e45e1dec708e141230ac36a20e5a812505ac5ee9663465.js integrity="sha512-yVHYvAr+Fkw+iwfkTeznVGCeIbWWte8dGSy+bpNmbILainb5FDGPfKfkXh3scI4UEjCsNqIOWoElBaxe6WY0ZQ==" crossorigin=anonymous defer></script>
 </body>
 </html>

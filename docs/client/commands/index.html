@@ -13,13 +13,13 @@
 <meta name=robots content="index, follow">
 <meta name=googlebot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name=bingbot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<title>Commands - Owl</title>
+<title>User Commands - Owl</title>
 <meta name=description content="Owl is a job scheduler that allows to submit user jobs to a Kubernetes from anywhere.">
 <link rel=canonical href=https://eddienko.github.io/owl-pipeline/docs/client/commands/>
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Commands">
-<meta property="og:description" content="Authentication # Authenticate in the remote serverowl login Pipeline definitions # List available pipelinesowl pdef list# Get pipeline definition for pipeline `example`owl pdef get example Job submission and management # Submit jobowl submit pipeline.yml# Query status of Job ID 1owl status get 1# Get logs from Job ID 1owl logs get 1# Cancel Job ID 1owl cancel 1 ">
+<meta property="og:title" content="User Commands">
+<meta property="og:description" content="👉 Make sure the OWL_API_URL environmental variable points to the public address of the Owl API service or add the --api argument to all commands.Authentication  Authenticate in the remote server  owl auth login  Remove authentication token from local and remote server.  owl auth logout Pipeline definitions  List available pipeline definitions in the system  owl pdef list  Get pipeline definition for pipeline example  # Display in the consoleowl pdef get example # Save to a fileowl pdef get example -o example.">
 <meta property="og:url" content="https://eddienko.github.io/owl-pipeline/docs/client/commands/">
 <meta property="og:site_name" content="Owl">
 <meta property="article:published_time" content="2021-08-15T17:02:41+01:00">
@@ -29,11 +29,11 @@
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:site content="@getdoks">
 <meta name=twitter:creator content="@henkverlinde">
-<meta name=twitter:title content="Commands">
+<meta name=twitter:title content="User Commands">
 <meta name=twitter:description content>
 <meta name=twitter:image content="https://eddienko.github.io/owl-pipeline/doks.png">
-<meta name=twitter:image:alt content="Commands">
-<script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://eddienko.github.io/#/schema/organization/1","name":"Doks","url":"https://eddienko.github.io/","sameAs":["https://twitter.com/getdoks","https://github.com/h-enk/doks"],"logo":{"@type":"ImageObject","@id":"https://eddienko.github.io/#/schema/image/1","url":"https://eddienko.github.io/logo-doks.png","width":512,"height":512,"caption":"Doks"},"image":{"@id":"https://eddienko.github.io/#/schema/image/1"}},{"@type":"WebSite","@id":"https://eddienko.github.io/#/schema/website/1","url":"https://eddienko.github.io/","name":"Owl","description":"Owl is a job scheduler that allows to submit user jobs to a Kubernetes from anywhere.","publisher":{"@id":"https://eddienko.github.io/#/schema/organization/1"}},{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/","url":"https://eddienko.github.io/owl-pipeline/docs/client/commands/","name":"Commands","description":"","isPartOf":{"@id":"https://eddienko.github.io/#/schema/website/1"},"about":{"@id":"https://eddienko.github.io/#/schema/organization/1"},"datePublished":"2021-08-15T17:02:41CET","dateModified":"2021-08-15T17:02:41CET","breadcrumb":{"@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/#/schema/breadcrumb/1"},"primaryImageOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/#/schema/image/2"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://eddienko.github.io/owl-pipeline/docs/client/commands/"]}]},{"@type":"BreadcrumbList","@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/#/schema/breadcrumb/1","name":"Breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/","url":"https://eddienko.github.io/owl-pipeline/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/","url":"https://eddienko.github.io/owl-pipeline/docs/","name":"Docs"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/client/","url":"https://eddienko.github.io/owl-pipeline/docs/client/","name":"Client"}},{"@type":"ListItem","position":4,"item":{"@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://eddienko.github.io/#/schema/article/1","headline":"Commands","description":"","isPartOf":{"@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/"},"mainEntityOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/"},"datePublished":"2021-08-15T17:02:41CET","dateModified":"2021-08-15T17:02:41CET","author":{"@id":"https://eddienko.github.io/#/schema/person/2"},"publisher":{"@id":"https://eddienko.github.io/#/schema/organization/1"},"image":{"@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/#/schema/image/2"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://eddienko.github.io/#/schema/person/2","name":"Henk Verlinde","sameAs":["https://twitter.com/henkverlinde","https://www.linkedin.com/in/henkverlinde/","https://github.com/h-enk"]}]},{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/#/schema/image/2","url":"https://eddienko.github.io/owl-pipeline/doks.png","contentUrl":"https://eddienko.github.io/owl-pipeline/doks.png","caption":"Commands"}]}]}</script>
+<meta name=twitter:image:alt content="User Commands">
+<script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://eddienko.github.io/#/schema/organization/1","name":"Doks","url":"https://eddienko.github.io/","sameAs":["https://twitter.com/getdoks","https://github.com/h-enk/doks"],"logo":{"@type":"ImageObject","@id":"https://eddienko.github.io/#/schema/image/1","url":"https://eddienko.github.io/logo-doks.png","width":512,"height":512,"caption":"Doks"},"image":{"@id":"https://eddienko.github.io/#/schema/image/1"}},{"@type":"WebSite","@id":"https://eddienko.github.io/#/schema/website/1","url":"https://eddienko.github.io/","name":"Owl","description":"Owl is a job scheduler that allows to submit user jobs to a Kubernetes from anywhere.","publisher":{"@id":"https://eddienko.github.io/#/schema/organization/1"}},{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/","url":"https://eddienko.github.io/owl-pipeline/docs/client/commands/","name":"User Commands","description":"","isPartOf":{"@id":"https://eddienko.github.io/#/schema/website/1"},"about":{"@id":"https://eddienko.github.io/#/schema/organization/1"},"datePublished":"2021-08-15T17:02:41CET","dateModified":"2021-08-15T17:02:41CET","breadcrumb":{"@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/#/schema/breadcrumb/1"},"primaryImageOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/#/schema/image/2"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://eddienko.github.io/owl-pipeline/docs/client/commands/"]}]},{"@type":"BreadcrumbList","@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/#/schema/breadcrumb/1","name":"Breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/","url":"https://eddienko.github.io/owl-pipeline/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/","url":"https://eddienko.github.io/owl-pipeline/docs/","name":"Docs"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/client/","url":"https://eddienko.github.io/owl-pipeline/docs/client/","name":"Client"}},{"@type":"ListItem","position":4,"item":{"@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://eddienko.github.io/#/schema/article/1","headline":"User Commands","description":"","isPartOf":{"@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/"},"mainEntityOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/"},"datePublished":"2021-08-15T17:02:41CET","dateModified":"2021-08-15T17:02:41CET","author":{"@id":"https://eddienko.github.io/#/schema/person/2"},"publisher":{"@id":"https://eddienko.github.io/#/schema/organization/1"},"image":{"@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/#/schema/image/2"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://eddienko.github.io/#/schema/person/2","name":"Henk Verlinde","sameAs":["https://twitter.com/henkverlinde","https://www.linkedin.com/in/henkverlinde/","https://github.com/h-enk"]}]},{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","@id":"https://eddienko.github.io/owl-pipeline/docs/client/commands/#/schema/image/2","url":"https://eddienko.github.io/owl-pipeline/doks.png","contentUrl":"https://eddienko.github.io/owl-pipeline/doks.png","caption":"User Commands"}]}]}</script>
 <meta name=theme-color content="#fff">
 <link rel=apple-touch-icon sizes=180x180 href=https://eddienko.github.io/owl-pipeline/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://eddienko.github.io/owl-pipeline/favicon-32x32.png>
@@ -77,22 +77,26 @@
 <h3>Owl Scheduler</h3>
 <ul class=list-unstyled>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/prologue/introduction/>Introduction</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/prologue/architecture/>Architecture</a></li>
 </ul>
 <h3>Owl Server</h3>
 <ul class=list-unstyled>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/install/>Install</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/configuration/>Configuration</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/storage/>Storage</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/advanced/>Advanced</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/server/troubleshoot/>Troubleshooting</a></li>
 </ul>
 <h3>Owl Client</h3>
 <ul class=list-unstyled>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/install/>Quick Start</a></li>
-<li><a class="docs-link active" href=https://eddienko.github.io/owl-pipeline/docs/client/commands/>Commands</a></li>
-<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/admin/>Admin</a></li>
+<li><a class="docs-link active" href=https://eddienko.github.io/owl-pipeline/docs/client/commands/>User Commands</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/client/admin/>Admin Commands</a></li>
 </ul>
 <h3>Pipelines</h3>
 <ul class=list-unstyled>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/>Owl Pipelines</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/>Pipeline Signatures</a></li>
 <li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/development/>Creating Pipelines</a></li>
 </ul>
 <h3>Help</h3>
@@ -116,31 +120,75 @@
 </div>
 </nav>
 <main class="docs-content col-lg-11 col-xl-9">
-<h1>Commands</h1>
+<h1>User Commands</h1>
 <p class=lead></p>
+<div class="alert alert-warning d-flex" role=alert>
+<div class="flex-shrink-1 alert-icon">👉 </div>
+<div class=w-100> Make sure the <code>OWL_API_URL</code> environmental variable points to the public address of the Owl API service or
+add the <code>--api</code> argument to all commands.</div>
+</div>
 <h2 id=authentication>Authentication<a href=#authentication class=anchor aria-hidden=true>#</a> </h2>
-<pre><code class=language-bash># Authenticate in the remote server
-owl login
+<ul>
+<li>Authenticate in the remote server</li>
+</ul>
+<pre><code class=language-bash>owl auth login
+</code></pre>
+<ul>
+<li>Remove authentication token from local and remote server.</li>
+</ul>
+<pre><code class=language-bash>owl auth logout
 </code></pre>
 <h2 id=pipeline-definitions>Pipeline definitions<a href=#pipeline-definitions class=anchor aria-hidden=true>#</a> </h2>
-<pre><code class=language-bash># List available pipelines
-owl pdef list
+<ul>
+<li>List available pipeline definitions in the system</li>
+</ul>
+<pre><code class=language-bash>owl pdef list
+</code></pre>
+<ul>
+<li>Get pipeline definition for pipeline <code>example</code></li>
+</ul>
+<pre><code class=language-bash># Display in the console
+owl pdef get example 
 
-# Get pipeline definition for pipeline `example`
-owl pdef get example
+# Save to a file
+owl pdef get example -o example.yaml
 </code></pre>
 <h2 id=job-submission-and-management>Job submission and management<a href=#job-submission-and-management class=anchor aria-hidden=true>#</a> </h2>
-<pre><code class=language-bash># Submit job
-owl submit pipeline.yml
-
-# Query status of Job ID 1
-owl status get 1
-
-# Get logs from Job ID 1
-owl logs get 1
-
-# Cancel Job ID 1
-owl cancel 1
+<p>Commands to operate in jobs. Note that unless the user has admin privileges these
+commands can only operate in the user&rsquo;s own jobs.</p>
+<ul>
+<li>Submit a Job. The command wil return the unique ID of the job.</li>
+</ul>
+<pre><code class=language-bash>owl job submit pipeline.yml
+</code></pre>
+<ul>
+<li>List jobs. This will list the jobs for the current user. If user has admin
+privileges, the <code>-all</code> flag will return all jobs. The <code>--max</code> argument specifies
+the maximum number of jobs to return and <code>--latest</code> sets the ordering. Pipelines
+in particular statuses can be retrieved with the <code>--status</code> flag.</li>
+</ul>
+<pre><code class=language-bash>owl job list [--all] [--max 10] [--latest] [--status RUNNING]
+</code></pre>
+<ul>
+<li>Query status of a job. If <code>--json</code> is given, a detailed description
+in JSON is returned.</li>
+</ul>
+<pre><code class=language-bash>owl job status [--json] 1
+</code></pre>
+<ul>
+<li>Cancel a job.</li>
+</ul>
+<pre><code class=language-bash>owl job cancel 1
+</code></pre>
+<ul>
+<li>Inspect logs from job.</li>
+</ul>
+<pre><code class=language-bash>owl job logs [-f] 1
+</code></pre>
+<ul>
+<li>Rerun a job (the job must be in status finished, error or cancelled).</li>
+</ul>
+<pre><code class=language-bash>owl job rerun 1
 </code></pre>
 <div class="docs-navigation d-flex justify-content-between">
 <a href=https://eddienko.github.io/owl-pipeline/docs/client/install/>
@@ -153,7 +201,7 @@ owl cancel 1
 <a class=ms-auto href=https://eddienko.github.io/owl-pipeline/docs/client/admin/>
 <div class="card my-1">
 <div class="card-body py-2">
-Admin &rarr;
+Admin Commands &rarr;
 </div>
 </div>
 </a>
@@ -180,6 +228,6 @@ Admin &rarr;
 <script src=https://eddienko.github.io/owl-pipeline/js/bootstrap.min.586171fec3966d1a44fa8aa2edb24b861dc3a72be8cc24aa4e0dabe4c312a0dae5fe1eaa7c93180a6211fa4d7c5461b0d228fdf741be2eae279a376dfa1e7d81.js integrity="sha512-WGFx/sOWbRpE+oqi7bJLhh3DpyvozCSqTg2r5MMSoNrl/h6qfJMYCmIR+k18VGGw0ij990G+Lq4nmjdt+h59gQ==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/js/highlight.min.b7fe51cfee4d403e67d61ca560f9e4854f9786459a26219d149ba72fd88c3a0fed5c687649c151a0686a9b0bf492d5ec9b6b77b426979e63fc767315eeca3a3e.js integrity="sha512-t/5Rz+5NQD5n1hylYPnkhU+XhkWaJiGdFJunL9iMOg/tXGh2ScFRoGhqmwv0ktXsm2t3tCaXnmP8dnMV7so6Pg==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/main.min.9e62c9b0c5dc8279689cc9cb693a32c8ea1d19032f574f98c782ff59a0417d3662ff94b1a7755ab72a7a1862644bf00a58492c65aa0adabbc58080f4018c61bc.js integrity="sha512-nmLJsMXcgnlonMnLaToyyOodGQMvV0+Yx4L/WaBBfTZi/5Sxp3Vatyp6GGJkS/AKWEksZaoK2rvFgID0AYxhvA==" crossorigin=anonymous defer></script>
-<script src=https://eddienko.github.io/owl-pipeline/index.min.9e944e635b03450d3c38687300f56f25b2875c5a967609d2a832748b7bc321d8b11d4ce5ffb70827d7338c84b9a34258c7cb7f8434c232ecfcb67091fed8ac95.js integrity="sha512-npROY1sDRQ08OGhzAPVvJbKHXFqWdgnSqDJ0i3vDIdixHUzl/7cIJ9czjIS5o0JYx8t/hDTCMuz8tnCR/tislQ==" crossorigin=anonymous defer></script>
+<script src=https://eddienko.github.io/owl-pipeline/index.min.c951d8bc0afe164c3e8b07e44dece754609e21b596b5ef1d192cbe6e93666c82da8a76f914318f7ca7e45e1dec708e141230ac36a20e5a812505ac5ee9663465.js integrity="sha512-yVHYvAr+Fkw+iwfkTeznVGCeIbWWte8dGSy+bpNmbILainb5FDGPfKfkXh3scI4UEjCsNqIOWoElBaxe6WY0ZQ==" crossorigin=anonymous defer></script>
 </body>
 </html>
