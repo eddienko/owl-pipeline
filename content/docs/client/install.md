@@ -42,7 +42,7 @@ pip install owl-pipeline-client
 Using your credentials 
 
 ```bash
-owl login
+owl auth login
 ```
 
 This will ask for your username and password. Credentials will be saved to a file in your home 
@@ -92,5 +92,5 @@ It has a unique input parameter
 Adjust the resources and submit the pipeline using:
 
 ```bash
-owl submit example.yml
+owl job submit example.yml
 ```

@@ -53,13 +53,13 @@ Use the password to login and change the admin password:
 
 ```bash
 # Use the initial password
-owl login
+owl auth login
 
 # Update the password
 owl admin user update --admin admin yourNewPassword
 
 # Login with the new password
-owl login
+owl auth login
 ```
 
 ## Add pipeline signatures
@@ -91,11 +91,11 @@ owl pdef get example -o example.yaml
 Change the parameters or resources and submit it with:
 
 ```bash
-owl submit example.yaml
+owl job submit example.yaml
 ```
 
 ## Query pipeline status
 
 ```bash
-owl status get 1
+owl job status get 1
 ```
