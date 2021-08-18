@@ -23,7 +23,7 @@
     <div class="row justify-content-center text-center">
       <div class="col-lg-6">
         <h2 class="h4">Owl Server</h2>
-        <p>Allow external users to run jobs in a Kubernetes cluster.</p>
+        <p>Allow external users to run parameterized jobs in a Kubernetes cluster.</p>
       </div>
       <div class="col-lg-6">
         <h2 class="h4">Owl Client</h2>
@@ -50,10 +50,10 @@
 
       <div class="col-md-6 code-block">
         <pre><code class="language-bash"># Authenticate
-owl login
+owl auth login
 
 # Submit pipeline
-owl submit pipeline.yml</code></pre>
+owl job submit pipeline.yml</code></pre>
       </div>
     </div>
 

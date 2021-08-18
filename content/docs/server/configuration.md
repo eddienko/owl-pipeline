@@ -25,6 +25,30 @@ ADMIN_PASSWORD=$(kubectl exec $POD_NAME -- cat /var/run/owl/adminPassword)
 echo $ADMIN_PASSWORD
 ```
 
+## Command line Pod
+
+Run a Owl Client command line Pod in the server or install the Owl Client
+for remote access (this assumes the API is available remotely). In the first case run the Pod:
+
+```bash
+kubectl apply --namespace owl -f https://git.io/J0lsu
+```
+
+and when ready start a command line prompt:
+
+```bash
+kubectl exec -it owlcli --namespace owl -- /bin/bash
+```
+
+An alternative is to install the [Owl Client]({{< relref "docs/client/install.md" >}}) and define 
+an environmental variable pointing to the location of the API:
+
+```bash
+export OWL_API_URL=https://api.owl.com
+```
+
+## Update admin password
+
 Use the password to login and change the admin password:
 
 ```bash
@@ -38,17 +62,12 @@ owl admin user update --admin admin yourNewPassword
 owl login
 ```
 
-New users can be added with
-
-```bash
-owl admin user add [--admin] username password
-```
-
 ## Add pipeline signatures
 
 ```bash
 # Example pipeline
-owl admin pdef add http://.....
+curl -O http://somewhere.com/example.yaml
+owl admin pdef add example.yaml
 ```
 
 Check that they available:
@@ -59,4 +78,24 @@ owl pdef list
 
 # Get pipeline definition for example pipeline
 owl pdef get example
+```
+
+## Submit your first pipeline
+
+Retrieve the `example` pipeline definition file:
+
+```bash
+owl pdef get example -o example.yaml
+```
+
+Change the parameters or resources and submit it with:
+
+```bash
+owl submit example.yaml
+```
+
+## Query pipeline status
+
+```bash
+owl status get 1
 ```

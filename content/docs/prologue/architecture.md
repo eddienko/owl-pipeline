@@ -35,6 +35,12 @@ framework to execute jobs in a compute cluster backed up by Kubernetes and Dask.
 In essence Owl serves as very simple scheduler that accepts job descriptions,
 queues them and submits them for execution keeping track of progress.
 
+## Pipeline definition file
+
+When we refer to pipelines we understand parameterized jobs. The typical user chooses which pipeline to run from 
+those available in the system and submits a job with its own particular parameters. To do that the user
+only needs to write a **pipeline definition file (PDeF)** which includes the name of the pipeline to run,
+the arguments needed to run it and a request for resources.
 ## Job Lifecycle
 
 In order to run a particular job (pipeline) users write a pipeline definition
@@ -58,16 +64,12 @@ the Worker, stops it and contacts the API for a database update.
 The steps followed when running a pipeline are:
 
   * The user submits a pipeline definition file that is a YAML text file.
-  * The database is updated with the pipeline request. The Scheduler queries the
-  * database when slots are available and allocates pipelines.
-  * The Owl scheduler starts a pipeline worker in a Pod sending the
-  * pipeline definition file and extra configuration needed.
-  * The pipeline worker loads the pipeline code from the pip repository
-  * and validates inputs against its schema.
+  * The database is updated with the pipeline request. The scheduler queries the database when slots are available and allocates pipelines.
+  * The Owl scheduler starts a pipeline worker in a Pod sending the pipeline definition file and extra configuration needed.
+  * The pipeline worker loads the pipeline code from the pip repository and validates inputs against its schema.
   * The Kubernetes cluster starts the requested number of Pod Dask workers.
-  * The pipeline worker starts a separate thread and runs the pipeline code. The code runs in
-  * the allocated containers using Dask taking advantage of parallelization over all workers.
-  * The main pipeline thread listens for heartbeat connections from the scheduler and waits
-  * for pipeline completion.
+  * The pipeline worker starts a separate thread and runs the pipeline code. The code runs in the allocated containers using Dask taking advantage of parallelization over all workers.
+  * The main pipeline thread listens for heartbeat connections from the scheduler and waits for pipeline completion.
   * The pipeline worker responds with the pipeline completion result to the scheduler.
   * The scheduler stops the pipeline worker and logs an entry in the database.
+
