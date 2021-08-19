@@ -3,7 +3,7 @@
 ## Homepage
 title = "Owl"
 titleSeparator = "-"
-titleAddition = "Owl Job Scheduler"
+titleAddition = "Job Scheduler"
 description = "Owl is a job scheduler that allows to submit user jobs to a Kubernetes from anywhere."
 custom_css = ["css/custom.css"]
 
@@ -51,8 +51,7 @@ portraitPhotoWidths = [800, 700, 600, 500]
 lqipWidth = "20x"
 
 # Footer
-footer = ""
-copyRight = ""
+footer = "Powered by <a href=\"https://gohugo.io/\">Hugo</a>, and based on <a href=\"https://getdoks.org/\">Doks</a>"
 
 # Alert
 alert = false
