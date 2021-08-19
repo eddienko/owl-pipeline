@@ -3,9 +3,7 @@ Install The Owl client requires Python 3.7 or higher. It is recommended to creat
 conda create -n pipelines python=3.7
 In order to use the new environment:
 conda activate pipelines
-The latest stable version of the Owl client can be installed from PyPi:</description></item><item><title>User Commands</title><link>https://eddienko.github.io/owl-pipeline/docs/client/commands/</link><pubDate>Sun, 15 Aug 2021 17:02:41 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/client/commands/</guid><description>👉
-Make sure the OWL_API_URL environmental variable points to the public address of the Owl API service or add the --api argument to all commands.
-Authentication Authenticate in the remote server owl auth login
+The latest stable version of the Owl client can be installed from PyPi:</description></item><item><title>User Commands</title><link>https://eddienko.github.io/owl-pipeline/docs/client/commands/</link><pubDate>Sun, 15 Aug 2021 17:02:41 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/client/commands/</guid><description>info Make sure the OWL_API_URL environmental variable points to the public address of the Owl API service or add the --api argument to all commands. Authentication Authenticate in the remote server owl auth login
 Remove authentication token from local and remote server. owl auth logout
 Change password. owl auth change_password
 Pipeline definitions List available pipeline definitions in the system owl pdef list
@@ -13,9 +11,7 @@ Get pipeline definition for pipeline example # Display in the console
 owl pdef get example # Save to a file
 owl pdef get example -o example.</description></item><item><title>Admin Commands</title><link>https://eddienko.github.io/owl-pipeline/docs/client/admin/</link><pubDate>Sun, 15 Aug 2021 17:02:44 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/client/admin/</guid><description>Some of the commands in the previous section operate slightly different if the user issuing them has admin privileges or not. E.g. an admin user will be able to cancel any running pipeline while normal users can only modify theirs.
 This section lists specific administrative commands.
-Users 👉
-The admin user commands should not be used if the user table is managed by other system, e.g. Django.
-Add user owl admin user add [--admin] [--active] [--no-active] [-p password] username
+Users warning_amber The admin user commands should not be used if the user table is managed by other system, e.g. Django. Add user owl admin user add [--admin] [--active] [--no-active] [-p password] username
 Update user owl admin user update [--admin] [--active] [--no-active] [-p password] username
 Delete user owl admin user delete username
 List users owl admin user list
