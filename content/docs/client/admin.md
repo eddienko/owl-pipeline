@@ -28,12 +28,12 @@ e.g. Django.
 
 * Add user
 ```bash
-owl admin user add [--admin] username password
+owl admin user add [--admin] [--active] [--no-active] [-p password] username
 ```
 
 * Update user
 ```bash
-owl admin user update [--admin] [--(in)active] username [password]
+owl admin user update [--admin] [--active] [--no-active] [-p password] username
 ```
 
 * Delete user
@@ -41,17 +41,29 @@ owl admin user update [--admin] [--(in)active] username [password]
 owl admin user delete username
 ```
 
+* List users
+```bash
+owl admin user list
+```
+
+* List one user
+```bash
+owl admin user get username
+```
+
 ## Pipeline signatures
 
-* Add pipeline signature
+* Add or update a pipeline signature
 ```bash
 owl admin pdef add pipedef.yaml
 ```
 
-* Update pipeline signature
+* Delete a pipeline signature
 ```bash
-owl admin pdef update pipedef.yaml
+owl admin pdef delete name
 ```
+
+
 
 ## Set flags in the server
 

@@ -13,19 +13,24 @@ weight: 502
 toc: true
 ---
 
+Pipelines are Python packages installable using `pip`, i.e. they can uploaded to PyPi or
+to a private repository. In order for the server to run a pipeline this needs to be 
+defined as active in the system. Otherwise any pip installable package with the correct
+entrypoint could be run in the system posing a security risk. For this we
+define pipeline definition signatures.
+
 The pipeline definition signatures that are used with the `admin pdef` commands
 (see [Admin commands]({{< relref "docs/client/admin.md#pipeline-definitions" >}}))
 are slightly different to the pipeline definition files used to submit a pipeline.
 
-The difference is the pressence of two additional keywords in the former: `extra_pip_packages` and `active`. 
+The difference is the pressence of two additional keywords in the former: `extra_pip_packages` and `active` prepended with `sig:`:
 
 ```yaml
 # Version of the configuration file
 version: 1
 
-# Pipeline signature
-extra_pip_packages: owl-example-pipeline
-active: True
+sig:extra_pip_packages: owl-example-pipeline
+sig:active: True
 
 # Name of the pipeline
 name: example

@@ -30,6 +30,11 @@ owl auth login
 owl auth logout
 ```
 
+* Change password.
+```bash
+owl auth change_password
+```
+
 ## Pipeline definitions
 
 * List available pipeline definitions in the system
