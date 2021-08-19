@@ -1,7 +1,7 @@
 ---
 title: "Storage"
 description: ""
-lead: ""
+lead: "Customizing storage and providing permanent storage."
 date: 2021-08-15T16:56:40+01:00
 lastmod: 2021-08-15T16:56:40+01:00
 draft: false
