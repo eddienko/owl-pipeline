@@ -7,6 +7,7 @@ The latest stable version of the Owl client can be installed from PyPi:</descrip
 Make sure the OWL_API_URL environmental variable points to the public address of the Owl API service or add the --api argument to all commands.
 Authentication Authenticate in the remote server owl auth login
 Remove authentication token from local and remote server. owl auth logout
+Change password. owl auth change_password
 Pipeline definitions List available pipeline definitions in the system owl pdef list
 Get pipeline definition for pipeline example # Display in the console
 owl pdef get example # Save to a file
@@ -14,7 +15,9 @@ owl pdef get example -o example.</description></item><item><title>Admin Commands
 This section lists specific administrative commands.
 Users 👉
 The admin user commands should not be used if the user table is managed by other system, e.g. Django.
-Add user owl admin user add [--admin] username password
-Update user owl admin user update [--admin] [--(in)active] username [password]
+Add user owl admin user add [--admin] [--active] [--no-active] [-p password] username
+Update user owl admin user update [--admin] [--active] [--no-active] [-p password] username
 Delete user owl admin user delete username
-Pipeline signatures Add pipeline signature owl admin pdef add pipedef.</description></item></channel></rss>
+List users owl admin user list
+List one user owl admin user get username
+Pipeline signatures Add or update a pipeline signature owl admin pdef add pipedef.</description></item></channel></rss>
