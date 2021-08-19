@@ -21,7 +21,7 @@ This section lists specific administrative commands.
 
 ## Users
 
-{{< alert icon="👉" >}}
+{{< alert icon="warning_amber" >}}
 The `admin user` commands should not be used if the user table is managed by other system,
 e.g. Django.
 {{< /alert >}}

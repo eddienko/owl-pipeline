@@ -13,7 +13,7 @@ weight: 403
 toc: true
 ---
 
-{{< alert icon="👉" >}}
+{{< alert icon="info" >}}
 Make sure the `OWL_API_URL` environmental variable points to the public address of the Owl API service or
 add the `--api` argument to all commands.
 {{< /alert >}}

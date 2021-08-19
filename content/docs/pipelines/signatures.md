@@ -48,6 +48,6 @@ resources:
 **extra_pip_packages** lists the package that contains the pipeline
 and **active** sets if users can use it to run pipelines in the server.
 
-{{< alert icon="💡" >}}
+{{< alert icon="info" >}}
 At the moment it is not possible to have two versions of the same pipeline signature.
 {{< /alert >}}

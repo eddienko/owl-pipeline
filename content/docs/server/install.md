@@ -14,7 +14,7 @@ weight: 302
 toc: true
 ---
 
-{{< alert icon="👉" text="Throughout this documentation we assume that you have a Kubernetes cluster already spin up and the control panel is reachable using command line tools. Helm 3 is used." />}}
+{{< alert icon="info" text="Throughout this documentation we assume that you have a Kubernetes cluster already spin up and the control panel is reachable using command line tools. Helm 3 is used." />}}
 
 ## Add the Helm repository
 

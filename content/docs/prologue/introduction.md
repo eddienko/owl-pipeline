@@ -23,7 +23,7 @@ The [Owl Client]({{< relref "docs/client/install.md" >}}) runs in the user space
 (i.e. in any other system outside of the cluster) and is used to interact with the server,
 mainly to submit jobs and perform some administrative tasks.
 
-{{< alert icon="💡" >}}
+{{< alert icon="info" >}}
 We are releasing a preview version of the Owl Scheduler that has been in production for two years.
 While not all features have been released yet, we are working on bringing them in.
 The current version is however usable and we welcome any input from the community in our
@@ -32,7 +32,7 @@ The current version is however usable and we welcome any input from the communit
 
 ## Pre-Requisites
 
-{{< alert icon="👉" text="You will need a running Kubernetes cluster." />}}
+{{< alert icon="info" text="You will need a running Kubernetes cluster." />}}
 
 In order to install and run the scheduler you need access to a Kubernetes cluster. We have tried Owl in the following
 versions:

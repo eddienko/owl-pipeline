@@ -14,7 +14,7 @@ weight: 605
 toc: true
 ---
 
-{{< alert icon="👉" >}}
+{{< alert icon="help_outline" >}}
 We welcome any comments on the usefulness of this software, ideas, enhancements, questions, etc.
 {{< /alert >}}
 ### Join the discussion
