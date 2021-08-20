@@ -35,8 +35,7 @@ The chart deploys the following components on the Kubernetes cluster:
 * Owl API
 
 ```bash
-helm install owl owl/owl \ 
-      -n owl --create-namespace -f values.yaml
+helm install owl owl/owl -n owl --create-namespace -f values.yaml
 ```
 
 This creates a namespace called `owl` if it does not exist and deploys all components there.
@@ -116,7 +115,7 @@ deployment to make the API available in a subpath
 
 ## Deployment in GKE
 
-In Google Kubernetes Engine the cluster created with GKE Autopilot is not yet supported. Use a standard GKE cluster instead with (some) nodes using at least the `e2-standard-4` type.
+In Google Kubernetes Engine the cluster created with GKE Autopilot is not yet supported. Use a standard GKE cluster instead.
 
 An example values file for deploying the Helm chart in GKE is available from
 [values.yaml](https://github.com/eddienko/owl-pipeline-server/blob/main/examples/gce/values.yaml).
