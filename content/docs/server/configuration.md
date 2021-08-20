@@ -31,7 +31,8 @@ Run a Owl Client command line Pod in the server or install the Owl Client
 for remote access (this assumes the API is available remotely). In the first case run the Pod:
 
 ```bash
-kubectl apply --namespace owl -f https://git.io/J0lsu
+kubectl apply --namespace owl \
+    -f https://raw.githubusercontent.com/eddienko/owl-pipeline-server/main/examples/imaxt/owlcli.yaml
 ```
 
 and when ready start a command line prompt:
@@ -66,11 +67,11 @@ owl auth login
 
 ```bash
 # Example pipeline
-curl -O http://somewhere.com/example.yaml
-owl admin pdef add example.yaml
+curl -O https://raw.githubusercontent.com/eddienko/owl-pipeline-client/main/pipelines/signature_example.yaml
+owl admin pdef add signature_example.yaml
 ```
 
-Check that they available:
+Check that they are available:
 
 ```bash
 # List all signatures
