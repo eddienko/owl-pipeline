@@ -34,6 +34,16 @@
   url = "/docs/prologue/introduction/"
   weight = 10
 
+[[main]]
+  name = "Community"
+  url = "https://github.com/eddienko/owl-pipeline-server/discussions"
+  weight = 40
+
+[[main]]
+  name = "About"
+  url = "/about/"
+  weight = 90
+
 # [[main]]
 #   name = "Blog"
 #   url = "/blog/"
@@ -56,3 +66,8 @@
 #   name = "Privacy"
 #   url = "/privacy-policy/"
 #   weight = 10
+
+# [[footer]]
+#   name = "About"
+#   url = "/about/"
+#   weight = 10
