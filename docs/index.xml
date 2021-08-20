@@ -16,4 +16,19 @@ memory: 10
 image: myrepo/customimage:tag</description></item><item><title>Troubleshooting</title><link>https://eddienko.github.io/owl-pipeline/docs/server/troubleshoot/</link><pubDate>Sun, 15 Aug 2021 16:56:40 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/server/troubleshoot/</guid><description/></item><item><title>Owl Pipelines</title><link>https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/</link><pubDate>Sun, 15 Aug 2021 21:00:06 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/</guid><description>Owl pipelines are pip installable Python packages. In order to submit a pipeline to the system, the admin must have activated it and you need a pipeline definition file (PDeF). This is a YAML file that contains the name of the pipeline, its arguments and requested resources.
 Currently there are three general purpose pipelines available.
 Example Pipeline This is just a pipeline that uses Dask to run some dummy computations and can be used for general testing and as a template for writing more complicated pipelines.</description></item><item><title>Pipeline Signatures</title><link>https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/</link><pubDate>Sun, 15 Aug 2021 20:55:31 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/</guid><description>Pipelines are Python packages installable using pip, i.e. they can uploaded to PyPi or to a private repository. In order for the server to run a pipeline this needs to be defined as active in the system. Otherwise any pip installable package with the correct entrypoint could be run in the system posing a security risk. For this we define pipeline definition signatures.
-The pipeline definition signatures that are used with the admin pdef commands (see Admin commands) are slightly different to the pipeline definition files used to submit a pipeline.</description></item><item><title>Creating Pipelines</title><link>https://eddienko.github.io/owl-pipeline/docs/pipelines/development/</link><pubDate>Sun, 15 Aug 2021 20:55:31 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/pipelines/development/</guid><description>Owl pipelines are pip installable Python packages. This page shows how to create a pipeline from scratch.</description></item></channel></rss>
+The pipeline definition signatures that are used with the admin pdef commands (see Admin commands) are slightly different to the pipeline definition files used to submit a pipeline.</description></item><item><title>Development Guide</title><link>https://eddienko.github.io/owl-pipeline/docs/pipelines/development/</link><pubDate>Sun, 15 Aug 2021 20:55:31 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/pipelines/development/</guid><description>Owl pipelines are pip installable Python packages. This page shows how to develop a custom pipeline. The example pipeline is a good starting point. The directory structure is similar to any Python package.
+.
+├── LICENSE
+├── README.rst
+├── requirements_dev.txt
+├── setup.cfg
+├── setup.py
+├── conf
+│ └── example.yml
+├── doc
+│ ├── Makefile
+│ ├── _static
+│ │ └── readme
+│ ├── _templates
+│ │ └── readme
+│ ├── conf.</description></item></channel></rss>
