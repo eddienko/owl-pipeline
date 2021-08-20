@@ -122,10 +122,10 @@ POD_NAME=$(kubectl get pods --namespace owl -l &#34;app.kubernetes.io/name=owl-s
 <ul>
 <li><a href=#admin-password>Admin password</a></li>
 <li><a href=#command-line-pod>Command line Pod</a></li>
-<li><a href=#update-admin-password>Update admin password</a></li>
+<li><a href=#update-admin-password-optional>Update admin password (Optional)</a></li>
 <li><a href=#add-pipeline-signatures>Add pipeline signatures</a></li>
 <li><a href=#submit-your-first-pipeline>Submit your first pipeline</a></li>
-<li><a href=#query-pipeline-status>Query pipeline status</a></li>
+<li><a href=#inspect-the-status>Inspect the status</a></li>
 </ul>
 </nav>
 </div>
@@ -153,7 +153,7 @@ for remote access (this assumes the API is available remotely). In the first cas
 an environmental variable pointing to the location of the API:</p>
 <pre><code class=language-bash>export OWL_API_URL=https://api.owl.com
 </code></pre>
-<h2 id=update-admin-password>Update admin password<a href=#update-admin-password class=anchor aria-hidden=true>#</a> </h2>
+<h2 id=update-admin-password-optional>Update admin password (Optional)<a href=#update-admin-password-optional class=anchor aria-hidden=true>#</a> </h2>
 <p>Use the password to login and change the admin password:</p>
 <pre><code class=language-bash># Use the initial password
 owl auth login
@@ -183,9 +183,39 @@ owl pdef get example
 <p>Change the parameters or resources and submit it with:</p>
 <pre><code class=language-bash>owl job submit example.yaml
 </code></pre>
-<h2 id=query-pipeline-status>Query pipeline status<a href=#query-pipeline-status class=anchor aria-hidden=true>#</a> </h2>
-<pre><code class=language-bash>owl job status get 1
+<h2 id=inspect-the-status>Inspect the status<a href=#inspect-the-status class=anchor aria-hidden=true>#</a> </h2>
+<pre><code class=language-bash>owl job status 1
 </code></pre>
+<p>You can inspect that the job has been scheduled</p>
+<pre><code class=language-bash>$ kubectl get jobs --namespace owl
+NAME         COMPLETIONS   DURATION   AGE
+pipeline-1   0/1           3m25s      3m25s
+</code></pre>
+<p>and that the different pods are running in the cluster:</p>
+<pre><code class=language-bash>$ kubectl get pods --namespace owl
+NAME                             READY   STATUS    RESTARTS   AGE
+dask-1-9fa0db99-f5c98k           1/1     Running   0          2m48s
+dask-1-9fa0db99-fthdf9           1/1     Running   0          3m9s
+owl-api-686cdff988-75rkv         1/1     Running   0          19h
+owl-scheduler-6cf6458857-65tkq   1/1     Running   0          19h
+owlcli                           1/1     Running   0          63m
+pipeline-1--1-nr228              1/1     Running   0          3m26s
+</code></pre>
+<p>The Dask scheduler is published using a service (by defaul using ClusterIP) that allows
+for visualization of the Dask dashboard:</p>
+<pre><code class=language-bash>$ kubectl get services --namespace owl
+NAME                TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+dask-1-9fa0db99-f   ClusterIP      10.103.131.231   &lt;none&gt;        8786/TCP,8787/TCP            57s
+</code></pre>
+<p>We can look at it by forwarding the port to the local host:</p>
+<pre><code class=language-bash>kubectl port-forward service/dask-1-9fa0db99-f 8787:8787
+</code></pre>
+<p>and directing the browser to http://localhost:8787.</p>
+<figure class=border-0>
+<img class="img-fluid lazyload blur-up" data-sizes=auto src=https://eddienko.github.io/owl-pipeline/docs/server/configuration/dask_hufd7f2d60a96e14056f07b43e840c7646_236435_20x0_resize_box_3.png data-srcset="https://eddienko.github.io/owl-pipeline/docs/server/configuration/dask_hufd7f2d60a96e14056f07b43e840c7646_236435_900x0_resize_box_3.png 900w,https://eddienko.github.io/owl-pipeline/docs/server/configuration/dask_hufd7f2d60a96e14056f07b43e840c7646_236435_800x0_resize_box_3.png 800w,https://eddienko.github.io/owl-pipeline/docs/server/configuration/dask_hufd7f2d60a96e14056f07b43e840c7646_236435_700x0_resize_box_3.png 700w,https://eddienko.github.io/owl-pipeline/docs/server/configuration/dask_hufd7f2d60a96e14056f07b43e840c7646_236435_600x0_resize_box_3.png 600w,https://eddienko.github.io/owl-pipeline/docs/server/configuration/dask_hufd7f2d60a96e14056f07b43e840c7646_236435_500x0_resize_box_3.png 500w" width=1720 height=1452 alt="Dask Dashboard">
+<noscript><img class=img-fluid sizes=100vw srcset="https://eddienko.github.io/owl-pipeline/docs/server/configuration/dask_hufd7f2d60a96e14056f07b43e840c7646_236435_900x0_resize_box_3.png 900w,https://eddienko.github.io/owl-pipeline/docs/server/configuration/dask_hufd7f2d60a96e14056f07b43e840c7646_236435_800x0_resize_box_3.png 800w,https://eddienko.github.io/owl-pipeline/docs/server/configuration/dask_hufd7f2d60a96e14056f07b43e840c7646_236435_700x0_resize_box_3.png 700w,https://eddienko.github.io/owl-pipeline/docs/server/configuration/dask_hufd7f2d60a96e14056f07b43e840c7646_236435_600x0_resize_box_3.png 600w,https://eddienko.github.io/owl-pipeline/docs/server/configuration/dask_hufd7f2d60a96e14056f07b43e840c7646_236435_500x0_resize_box_3.png 500w" src=https://eddienko.github.io/owl-pipeline/docs/server/configuration/dask.png width=1720 height=1452 alt="Dask Dashboard"></noscript>
+<figcaption class=figure-caption><em>Dask Dashboard</em></figcaption>
+</figure>
 <div class="docs-navigation d-flex justify-content-between">
 <a href=https://eddienko.github.io/owl-pipeline/docs/server/install/>
 <div class="card my-1">
@@ -224,6 +254,6 @@ Storage &rarr;
 <script src=https://eddienko.github.io/owl-pipeline/js/bootstrap.min.586171fec3966d1a44fa8aa2edb24b861dc3a72be8cc24aa4e0dabe4c312a0dae5fe1eaa7c93180a6211fa4d7c5461b0d228fdf741be2eae279a376dfa1e7d81.js integrity="sha512-WGFx/sOWbRpE+oqi7bJLhh3DpyvozCSqTg2r5MMSoNrl/h6qfJMYCmIR+k18VGGw0ij990G+Lq4nmjdt+h59gQ==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/js/highlight.min.b7fe51cfee4d403e67d61ca560f9e4854f9786459a26219d149ba72fd88c3a0fed5c687649c151a0686a9b0bf492d5ec9b6b77b426979e63fc767315eeca3a3e.js integrity="sha512-t/5Rz+5NQD5n1hylYPnkhU+XhkWaJiGdFJunL9iMOg/tXGh2ScFRoGhqmwv0ktXsm2t3tCaXnmP8dnMV7so6Pg==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/main.min.9e62c9b0c5dc8279689cc9cb693a32c8ea1d19032f574f98c782ff59a0417d3662ff94b1a7755ab72a7a1862644bf00a58492c65aa0adabbc58080f4018c61bc.js integrity="sha512-nmLJsMXcgnlonMnLaToyyOodGQMvV0+Yx4L/WaBBfTZi/5Sxp3Vatyp6GGJkS/AKWEksZaoK2rvFgID0AYxhvA==" crossorigin=anonymous defer></script>
-<script src=https://eddienko.github.io/owl-pipeline/index.min.bad7940a39b754911d4ddfaf1b2b3766138c5373fa4d09028f7121ae2d0c7b0d36a9045fb23e1d828257edf0787d919eaba102c34e0e582f0143e414ed7a89c7.js integrity="sha512-uteUCjm3VJEdTd+vGys3ZhOMU3P6TQkCj3Ehri0Mew02qQRfsj4dgoJX7fB4fZGeq6ECw04OWC8BQ+QU7XqJxw==" crossorigin=anonymous defer></script>
+<script src=https://eddienko.github.io/owl-pipeline/index.min.0560492440a27f1405a9266e5c7bd6859eb6074a6cd650469f7e953e97c6e3e773390ae3f84a5d75d7c8a6cda0c297d6e79d2bc7dc75206a9360b689300316d9.js integrity="sha512-BWBJJECifxQFqSZuXHvWhZ62B0ps1lBGn36VPpfG4+dzOQrj+EpdddfIps2gwpfW550rx9x1IGqTYLaJMAMW2Q==" crossorigin=anonymous defer></script>
 </body>
 </html>

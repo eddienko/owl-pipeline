@@ -7,7 +7,8 @@ ADMIN_PASSWORD=$(kubectl exec $POD_NAME -- cat /var/run/owl/adminPassword)
 echo $ADMIN_PASSWORD
 Command line Pod Run a Owl Client command line Pod in the server or install the Owl Client for remote access (this assumes the API is available remotely).</description></item><item><title>Storage</title><link>https://eddienko.github.io/owl-pipeline/docs/server/storage/</link><pubDate>Sun, 15 Aug 2021 16:56:40 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/server/storage/</guid><description>Scheduler By default a PVC is created that stores the SQLite database and logs from the pipelines. This is mounted in /var/run/owl.
 TBD.
-Pipeline jobs TBD.</description></item><item><title>Advanced</title><link>https://eddienko.github.io/owl-pipeline/docs/server/advanced/</link><pubDate>Sun, 15 Aug 2021 16:56:40 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/server/advanced/</guid><description>External user database TBD. It is possible to have the user database managed by an external application, e.g. a Django site.
+Pipeline jobs Storage provided to the pipeline will be mounted by the pipeline and all Dask workers. For this reason it needs to be able to be mounted in ReadWriteMany mode.
+Option 1: hostPath If we have somewhere a NFS server and all the nodes have access to the same mounted shares we can use hostPath to define user storage.</description></item><item><title>Advanced</title><link>https://eddienko.github.io/owl-pipeline/docs/server/advanced/</link><pubDate>Sun, 15 Aug 2021 16:56:40 +0100</pubDate><guid>https://eddienko.github.io/owl-pipeline/docs/server/advanced/</guid><description>External user database TBD. It is possible to have the user database managed by an external application, e.g. a Django site.
 Custom Docker image for pipelines As part of the resources section of the pipeline definition file it is possible to specify a custom Docker image, e.g.:
 resources:
 threads: 10
