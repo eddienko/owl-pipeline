@@ -8,14 +8,14 @@ description = "Owl is a job scheduler that allows to submit user jobs to a Kuber
 custom_css = ["css/custom.css"]
 
 ## Open Graph
-images = ["doks.png"]
+images = ["owl.png"]
 ogLocale = "en_US"
 domainTLD = "doks.netlify.app"
 titleHome = "Doks Theme"
 
 ## Twitter Cards
-twitterSite = "@getdoks"
-twitterCreator = "@henkverlinde"
+twitterSite = "Owl"
+twitterCreator = "@eddienko"
 
 ## JSON-LD
 # schemaType = "Person"
