@@ -10,31 +10,31 @@ custom_css = ["css/custom.css"]
 ## Open Graph
 images = ["owl.png"]
 ogLocale = "en_US"
-domainTLD = "doks.netlify.app"
-titleHome = "Doks Theme"
+domainTLD = "eddienko.github.io"
+titleHome = "Owl Job Scheduler"
 
 ## Twitter Cards
 twitterSite = "Owl"
 twitterCreator = "@eddienko"
 
 ## JSON-LD
-# schemaType = "Person"
-schemaType = "Organization"
-schemaName = "Doks"
-schemaAuthor = "Henk Verlinde"
-schemaAuthorTwitter = "https://twitter.com/henkverlinde"
-schemaAuthorLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
-schemaAuthorGitHub = "https://github.com/h-enk"
+schemaType = "Person"
+# schemaType = "Organization"
+schemaName = "Owl"
+schemaAuthor = "Eduardo Gonzalez Solares"
+schemaAuthorTwitter = "https://twitter.com/eddienko"
+schemaAuthorLinkedIn = "https://www.linkedin.com/in/eddienko/"
+schemaAuthorGitHub = "https://github.com/eddienko"
 schemaLocale = "en-US"
 schemaLogo = "logo-doks.png"
 schemaLogoWidth = 512
 schemaLogoHeight = 512
-schemaImage = "doks.png"
+schemaImage = "owl.png"
 schemaImageWidth = 1280
 schemaImageHeight = 640
-schemaTwitter = "https://twitter.com/getdoks"
+schemaTwitter = "https://twitter.com/eddienko"
 schemaLinkedIn = ""
-schemaGitHub = "https://github.com/h-enk/doks"
+schemaGitHub = "https://github.com/eddienko/owl-pipeline"
 schemaSection = "blog"
 
 ## Sitelinks Search Box
