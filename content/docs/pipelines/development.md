@@ -14,7 +14,7 @@ toc: true
 ---
 
 Owl pipelines are pip installable Python packages. This page shows how to develop a custom pipeline.
-The [example pipeline]() is a good starting point. The directory structure is similar to any Python
+The [example pipeline](https://github.com/eddienko/owl-example-pipeline) is a good starting point. The directory structure is similar to any Python
 package.
 
 ```bash
@@ -53,22 +53,25 @@ The validation uses [voluptuous](https://github.com/alecthomas/voluptuous). The 
 by Owl prior to launching the pipeline.
 
 ```python
+from pathlib import Path
+
 import voluptuous as vo
 
 schema = vo.Schema({
   vo.Required("datalen"): vo.Range(1, 1000), 
-  vo.Optional("output_dir"): str
+  vo.Optional("output"): vo.Coerce(Path),
 })
 ```
 
 ## Main pipeline
 
 ```python
-import dask
-from owl_dev import pipeline
-from owl_dev.logging import logger
+import logging
 
-@pipeline
+import dask
+
+logger = logging.getLogger("owl.daemon.pipeline")
+
 def main(*, datalen: int, output_dir: Path=None) -> int:
     ...
     logger.info("Starting computation")

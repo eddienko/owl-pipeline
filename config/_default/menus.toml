@@ -28,11 +28,21 @@
   identifier = "pipelines"
   url = "/docs/pipelines/"
 
+[[showcase]]
+  name = "Browse"
+  weight = 10
+  identifier = "browse"
+  url = "/showcase/"
 
 [[main]]
   name = "Docs"
   url = "/docs/prologue/introduction/"
   weight = 10
+
+[[main]]
+  name = "Pipelines"
+  url = "/showcase/example/"
+  weight = 20
 
 [[main]]
   name = "Community"
