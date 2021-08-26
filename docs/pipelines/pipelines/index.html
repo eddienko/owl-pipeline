@@ -6,7 +6,7 @@
 <link rel=preload as=font href=https://eddienko.github.io/owl-pipeline/fonts/vendor/jost/jost-v4-latin-regular.woff2 type=font/woff2 crossorigin>
 <link rel=preload as=font href=https://eddienko.github.io/owl-pipeline/fonts/vendor/jost/jost-v4-latin-700.woff2 type=font/woff2 crossorigin>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel=stylesheet>
-<link rel=stylesheet href=https://eddienko.github.io/owl-pipeline/main.81491e15f364d8177bfd19c2095f6544698e62de2f28d7fca54332923762e5a29bf1970f20c217495243842d99bdb83faded0683ae71daa08c0a0fcb1ea8da96.css integrity="sha512-gUkeFfNk2Bd7/RnCCV9lRGmOYt4vKNf8pUMykjdi5aKb8ZcPIMIXSVJDhC2Zvbg/re0Gg65x2qCMCg/LHqjalg==" crossorigin=anonymous>
+<link rel=stylesheet href=https://eddienko.github.io/owl-pipeline/main.aa9fd48a0f79f6876bf6c0c1b7232cf4debd994af5c70a70c4477babe40eeff662204f10f017b9605e1c3e0ff244d14ee323ced1e99da9fbf2d04aea9129633c.css integrity="sha512-qp/Uig959odr9sDBtyMs9N69mUr1xwpwxEd7q+QO7/ZiIE8Q8Be5YF4cPg/yRNFO4yPO0emdqfvy0ErqkSljPA==" crossorigin=anonymous>
 <link rel=stylesheet href=https://eddienko.github.io/owl-pipeline/css/custom.css>
 <noscript>
 <style>img.lazyload{display:none}</style>
@@ -20,9 +20,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Owl Pipelines">
-<meta property="og:description" content="Owl pipelines are pip installable Python packages. In order to submit a pipeline to the system, the admin must have activated it and you need a pipeline definition file (PDeF). This is a YAML file that contains the name of the pipeline, its arguments and requested resources.
-Currently there are three general purpose pipelines available.
-Example Pipeline This is just a pipeline that uses Dask to run some dummy computations and can be used for general testing and as a template for writing more complicated pipelines.">
+<meta property="og:description" content="Owl pipelines are pip installable Python packages. In order to submit a pipeline to the system, the admin must have activated it and you need a pipeline definition file (PDeF). This is a YAML file that contains the name of the pipeline, its arguments and requested resources.">
 <meta property="og:url" content="https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/">
 <meta property="og:site_name" content="Owl">
 <meta property="article:published_time" content="2021-08-15T21:00:06+01:00">
@@ -62,6 +60,9 @@ Example Pipeline This is just a pipeline that uses Dask to run some dummy comput
 <div class="collapse navbar-collapse order-4 order-md-1">
 <ul class="navbar-nav main-nav me-auto order-5 order-md-2"><li class="nav-item active">
 <a class=nav-link href=https://eddienko.github.io/owl-pipeline/docs/prologue/introduction/>Docs</a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=https://eddienko.github.io/owl-pipeline/showcase/example/>Pipelines</a>
 </li>
 <li class=nav-item>
 <a class=nav-link href=https://github.com/eddienko/owl-pipeline-server/discussions>Community</a>
@@ -119,13 +120,7 @@ Example Pipeline This is just a pipeline that uses Dask to run some dummy comput
 <nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
 <div class=page-links>
 <h3>On this page</h3>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#example-pipeline>Example Pipeline</a></li>
-<li><a href=#shell-pipeline>Shell pipeline</a></li>
-<li><a href=#papermill-pipeline>Papermill pipeline</a></li>
-</ul>
-</nav>
+<nav id=TableOfContents></nav>
 </div>
 </nav>
 <main class="docs-content col-lg-11 col-xl-9">
@@ -135,106 +130,6 @@ Example Pipeline This is just a pipeline that uses Dask to run some dummy comput
 to the system, the admin must have activated it and you need a
 <strong>pipeline definition file (PDeF)</strong>. This is a YAML file that contains
 the name of the pipeline, its arguments and requested resources.</p>
-<p>Currently there are three general purpose pipelines available.</p>
-<h2 id=example-pipeline>Example Pipeline<a href=#example-pipeline class=anchor aria-hidden=true>#</a> </h2>
-<p>This is just a pipeline that uses Dask to run some dummy computations and
-can be used for general testing and as a template for writing more
-complicated pipelines.</p>
-<pre><code class=language-yaml>version: 1
-
-# Name of the pipeline
-name: example
-
-# Pipeline arguments
-datalen: 100
-
-# Resources requested
-resources:
-  threads: 10
-  workers: 2
-  memory: 10
-</code></pre>
-<h2 id=shell-pipeline>Shell pipeline<a href=#shell-pipeline class=anchor aria-hidden=true>#</a> </h2>
-<p>The shell pipeline allows to execute an arbitrary command, typically a shell or a python script.</p>
-<p>The pipeline definition file is below (and can be obtained typing <code>owl pdef get shell</code>):</p>
-<pre><code class=language-yaml>version: 1.2
-
-# Name of the pipeline
-name: shell
-
-# Directory where the command is writing data to (optional)
-# output_dir: /tmp/output
-
-command: [&quot;sleep&quot;, &quot;300&quot;]
-
-# use_dask: false
-
-resources:
-  workers: 1
-  memory: 8
-  threads: 1
-</code></pre>
-<p>The <code>output_dir</code> is optional and if specified the sheduler will save a log file
-and the configuration used to run the pipeline as well as a list of
-environmental variables.</p>
-<p>The <code>command</code> parameter defines which command or script to run. The example above
-just waits for 5 minutes. Other command examples:</p>
-<pre><code class=language-yaml># Execute a Python script
-command: [&quot;/opt/conda/bin/python&quot;, &quot;script.py&quot;]
-
-# Execute a script that takes two arguments as input
-command: [&quot;/home/eglez/scripts/script.sh&quot;, &quot;100&quot;, &quot;200&quot;]
-</code></pre>
-<p>Note that the path to the executable must be specified fully and the command is
-a list containing all parts of the commands, i.e. the command ls -la would be
-written as [&ldquo;ls&rdquo;, &ldquo;-la&rdquo;].</p>
-<p>The <code>use_dask</code> parameters needs a bit of explanation. In the default mode (false)
-the script is run in only one worker with access to as much memory and cores
-requested. Internally the (python) script can use Dask, multiprocessing,
-multithreading or any other mechanism but the resources will be fixed to one
-worker.</p>
-<p>If use_dask is true then it makes sense to request more workers. It is required
-the python script connects to the Dask scheduler as follows:</p>
-<pre><code class=language-python>import os
-from distributed import Client
-
-DASK_SCHEDULER = os.getenv(&quot;DASK_SCHEDULER_ADDRESS&quot;)
-client = Client(DASK_SCHEDULER)
-</code></pre>
-<h2 id=papermill-pipeline>Papermill pipeline<a href=#papermill-pipeline class=anchor aria-hidden=true>#</a> </h2>
-<p>The papermill pipeline executes Jupyter notebooks using
-<a href=https://papermill.readthedocs.io>Papermill</a>. Plase read the official
-documentation on how to paramaterize the notebooks.</p>
-<p>An example pipeline definition file is below (and can be obtained typing <code>owl
-pdef get papermill</code>:</p>
-<pre><code class=language-yaml>version: 1.2
-
-# Name of the pipeline
-name: papermill
-
-input_dir: /home/user/myDir
-output_dir: /home/user/myDir
-notebook: notebook.ipynb
-
-paramaters: {}
-
-# use_dask: false
-
-resources:
-  workers: 1
-  memory: 8
-  threads: 1
-</code></pre>
-<p>The pipeline requires the input and output directories and the name of the
-notebook to execute. The executed notebook will be saved in the output directory
-with the name <code>notebook_out.ipynb</code> in this example.</p>
-<p>The parameters required to run the notebook are defined in parameters.</p>
-<p>The following shows an example output notebook that includes outputs and figures.</p>
-<figure class=border-0>
-<img class="img-fluid lazyload blur-up" data-sizes=auto src=https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/paperpipe_hu1b69d9c4d231fb584bc794f877d2a532_78177_20x0_resize_box_3.png data-srcset="https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/paperpipe_hu1b69d9c4d231fb584bc794f877d2a532_78177_800x0_resize_box_3.png 800w,https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/paperpipe_hu1b69d9c4d231fb584bc794f877d2a532_78177_700x0_resize_box_3.png 700w,https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/paperpipe_hu1b69d9c4d231fb584bc794f877d2a532_78177_600x0_resize_box_3.png 600w,https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/paperpipe_hu1b69d9c4d231fb584bc794f877d2a532_78177_500x0_resize_box_3.png 500w" width=926 height=1107 alt="Papermill Pipeline">
-<noscript><img class=img-fluid sizes=100vw srcset="https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/paperpipe_hu1b69d9c4d231fb584bc794f877d2a532_78177_800x0_resize_box_3.png 800w,https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/paperpipe_hu1b69d9c4d231fb584bc794f877d2a532_78177_700x0_resize_box_3.png 700w,https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/paperpipe_hu1b69d9c4d231fb584bc794f877d2a532_78177_600x0_resize_box_3.png 600w,https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/paperpipe_hu1b69d9c4d231fb584bc794f877d2a532_78177_500x0_resize_box_3.png 500w" src=https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/paperpipe.png width=926 height=1107 alt="Papermill Pipeline"></noscript>
-<figcaption class=figure-caption><em>Papermill Pipeline</em></figcaption>
-</figure>
 <div class="docs-navigation d-flex justify-content-between">
 <a href=https://eddienko.github.io/owl-pipeline/docs/client/admin/>
 <div class="card my-1">
@@ -273,6 +168,6 @@ Pipeline Signatures &rarr;
 <script src=https://eddienko.github.io/owl-pipeline/js/bootstrap.min.586171fec3966d1a44fa8aa2edb24b861dc3a72be8cc24aa4e0dabe4c312a0dae5fe1eaa7c93180a6211fa4d7c5461b0d228fdf741be2eae279a376dfa1e7d81.js integrity="sha512-WGFx/sOWbRpE+oqi7bJLhh3DpyvozCSqTg2r5MMSoNrl/h6qfJMYCmIR+k18VGGw0ij990G+Lq4nmjdt+h59gQ==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/js/highlight.min.b7fe51cfee4d403e67d61ca560f9e4854f9786459a26219d149ba72fd88c3a0fed5c687649c151a0686a9b0bf492d5ec9b6b77b426979e63fc767315eeca3a3e.js integrity="sha512-t/5Rz+5NQD5n1hylYPnkhU+XhkWaJiGdFJunL9iMOg/tXGh2ScFRoGhqmwv0ktXsm2t3tCaXnmP8dnMV7so6Pg==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/main.min.9e62c9b0c5dc8279689cc9cb693a32c8ea1d19032f574f98c782ff59a0417d3662ff94b1a7755ab72a7a1862644bf00a58492c65aa0adabbc58080f4018c61bc.js integrity="sha512-nmLJsMXcgnlonMnLaToyyOodGQMvV0+Yx4L/WaBBfTZi/5Sxp3Vatyp6GGJkS/AKWEksZaoK2rvFgID0AYxhvA==" crossorigin=anonymous defer></script>
-<script src=https://eddienko.github.io/owl-pipeline/index.min.0560492440a27f1405a9266e5c7bd6859eb6074a6cd650469f7e953e97c6e3e773390ae3f84a5d75d7c8a6cda0c297d6e79d2bc7dc75206a9360b689300316d9.js integrity="sha512-BWBJJECifxQFqSZuXHvWhZ62B0ps1lBGn36VPpfG4+dzOQrj+EpdddfIps2gwpfW550rx9x1IGqTYLaJMAMW2Q==" crossorigin=anonymous defer></script>
+<script src=https://eddienko.github.io/owl-pipeline/index.min.d516074e56b92cf3a964434b3f8c9031d0c888932e1607b09bce1ee4c1dfb2e1cfecf7ceef28771b9f9d9516f5ea5710f9f60a837ccefa01e07c707e56ec0cf3.js integrity="sha512-1RYHTla5LPOpZENLP4yQMdDIiJMuFgewm84e5MHfsuHP7PfO7yh3G5+dlRb16lcQ+fYKg3zO+gHgfHB+VuwM8w==" crossorigin=anonymous defer></script>
 </body>
 </html>

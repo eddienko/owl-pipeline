@@ -6,7 +6,7 @@
 <link rel=preload as=font href=https://eddienko.github.io/owl-pipeline/fonts/vendor/jost/jost-v4-latin-regular.woff2 type=font/woff2 crossorigin>
 <link rel=preload as=font href=https://eddienko.github.io/owl-pipeline/fonts/vendor/jost/jost-v4-latin-700.woff2 type=font/woff2 crossorigin>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel=stylesheet>
-<link rel=stylesheet href=https://eddienko.github.io/owl-pipeline/main.81491e15f364d8177bfd19c2095f6544698e62de2f28d7fca54332923762e5a29bf1970f20c217495243842d99bdb83faded0683ae71daa08c0a0fcb1ea8da96.css integrity="sha512-gUkeFfNk2Bd7/RnCCV9lRGmOYt4vKNf8pUMykjdi5aKb8ZcPIMIXSVJDhC2Zvbg/re0Gg65x2qCMCg/LHqjalg==" crossorigin=anonymous>
+<link rel=stylesheet href=https://eddienko.github.io/owl-pipeline/main.aa9fd48a0f79f6876bf6c0c1b7232cf4debd994af5c70a70c4477babe40eeff662204f10f017b9605e1c3e0ff244d14ee323ced1e99da9fbf2d04aea9129633c.css integrity="sha512-qp/Uig959odr9sDBtyMs9N69mUr1xwpwxEd7q+QO7/ZiIE8Q8Be5YF4cPg/yRNFO4yPO0emdqfvy0ErqkSljPA==" crossorigin=anonymous>
 <link rel=stylesheet href=https://eddienko.github.io/owl-pipeline/css/custom.css>
 <noscript>
 <style>img.lazyload{display:none}</style>
@@ -62,6 +62,9 @@
 <a class=nav-link href=https://eddienko.github.io/owl-pipeline/docs/prologue/introduction/>Docs</a>
 </li>
 <li class=nav-item>
+<a class=nav-link href=https://eddienko.github.io/owl-pipeline/showcase/example/>Pipelines</a>
+</li>
+<li class=nav-item>
 <a class=nav-link href=https://github.com/eddienko/owl-pipeline-server/discussions>Community</a>
 </li>
 <li class=nav-item>
@@ -89,7 +92,7 @@
 started</a>
 <p class=meta>Open-source MIT Licensed.
 <a href=https://github.com/eddienko/owl-pipeline-server>GitHub
-v0.7.1</a>
+v0.8.1</a>
 </p>
 </div>
 </div>
@@ -180,10 +183,11 @@ resources:
 </div>
 <div class="col-md-6 code-block">
 <pre><code class=language-python>from dask import delayed
-from owl_dev import pipeline
-from owl_dev.logging import logger
+import logging
+
+logger = logging.getLogger("owl.daemon.pipeline")
   
-@pipeline
+
 def main(*, datalen: int) -> int:
     logger.info("Computing...")
 
@@ -224,6 +228,6 @@ def main(*, datalen: int) -> int:
 <script src=https://eddienko.github.io/owl-pipeline/js/bootstrap.min.586171fec3966d1a44fa8aa2edb24b861dc3a72be8cc24aa4e0dabe4c312a0dae5fe1eaa7c93180a6211fa4d7c5461b0d228fdf741be2eae279a376dfa1e7d81.js integrity="sha512-WGFx/sOWbRpE+oqi7bJLhh3DpyvozCSqTg2r5MMSoNrl/h6qfJMYCmIR+k18VGGw0ij990G+Lq4nmjdt+h59gQ==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/js/highlight.min.b7fe51cfee4d403e67d61ca560f9e4854f9786459a26219d149ba72fd88c3a0fed5c687649c151a0686a9b0bf492d5ec9b6b77b426979e63fc767315eeca3a3e.js integrity="sha512-t/5Rz+5NQD5n1hylYPnkhU+XhkWaJiGdFJunL9iMOg/tXGh2ScFRoGhqmwv0ktXsm2t3tCaXnmP8dnMV7so6Pg==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/main.min.9e62c9b0c5dc8279689cc9cb693a32c8ea1d19032f574f98c782ff59a0417d3662ff94b1a7755ab72a7a1862644bf00a58492c65aa0adabbc58080f4018c61bc.js integrity="sha512-nmLJsMXcgnlonMnLaToyyOodGQMvV0+Yx4L/WaBBfTZi/5Sxp3Vatyp6GGJkS/AKWEksZaoK2rvFgID0AYxhvA==" crossorigin=anonymous defer></script>
-<script src=https://eddienko.github.io/owl-pipeline/index.min.0560492440a27f1405a9266e5c7bd6859eb6074a6cd650469f7e953e97c6e3e773390ae3f84a5d75d7c8a6cda0c297d6e79d2bc7dc75206a9360b689300316d9.js integrity="sha512-BWBJJECifxQFqSZuXHvWhZ62B0ps1lBGn36VPpfG4+dzOQrj+EpdddfIps2gwpfW550rx9x1IGqTYLaJMAMW2Q==" crossorigin=anonymous defer></script>
+<script src=https://eddienko.github.io/owl-pipeline/index.min.d516074e56b92cf3a964434b3f8c9031d0c888932e1607b09bce1ee4c1dfb2e1cfecf7ceef28771b9f9d9516f5ea5710f9f60a837ccefa01e07c707e56ec0cf3.js integrity="sha512-1RYHTla5LPOpZENLP4yQMdDIiJMuFgewm84e5MHfsuHP7PfO7yh3G5+dlRb16lcQ+fYKg3zO+gHgfHB+VuwM8w==" crossorigin=anonymous defer></script>
 </body>
 </html>
