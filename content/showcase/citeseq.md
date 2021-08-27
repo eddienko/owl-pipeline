@@ -18,6 +18,15 @@ link: https://github.com/eddienko/owl-cite-seq-count-pipeline
 This pipeline wraps the [CITE-seq-Count](https://github.com/Hoohm/CITE-seq-Count) tool to run
 in Owl. Please follow the link to learn more about this tool.
 
+## Install
+
+```bash
+curl -O https://raw.githubusercontent.com/eddienko/owl-cite-seq-count-pipeline/main/owl_cite_seq_count/cite-seq-count.yml
+owl admin pdef add cite-seq-count.yml
+```
+
+## Pipeline Definition File
+
 The pipeline definition file is:
 
 ```yaml
@@ -57,7 +66,7 @@ output: /storage/admin/5kPBMC/output
 
 # Resources requested
 resources:
-  threads: 10
+  cores: 10
   workers: 1
   memory: 32
 ```

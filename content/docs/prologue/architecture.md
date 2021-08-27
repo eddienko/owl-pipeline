@@ -41,6 +41,7 @@ When we refer to pipelines we understand parameterized jobs. The typical user ch
 those available in the system and submits a job with its own particular parameters. To do that the user
 only needs to write a **pipeline definition file (PDeF)** which includes the name of the pipeline to run,
 the arguments needed to run it and a request for resources.
+See [Owl Pipelines]({{< relref "docs/pipelines/index.md" >}}) for additional information.
 ## Job Lifecycle
 
 In order to run a particular job (pipeline) users write a pipeline definition

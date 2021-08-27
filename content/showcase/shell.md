@@ -15,6 +15,15 @@ toc: false
 link: https://github.com/eddienko/owl-shell-pipeline
 ---
 
+## Install
+
+```bash
+curl -O https://raw.githubusercontent.com/eddienko/owl-shell-pipeline/main/shell_pipeline/signature.yaml
+owl admin pdef add signature.yaml
+```
+
+## Pipeline definition file
+
 The following pipeline definition file example executes a shell script in the cluster.
 
 ```yaml
@@ -24,17 +33,22 @@ name: shell
 
 command: |
   #!/bin/bash
-  echo "hello" > /tmp/hello
+  echo "hello" > hello
   sleep 600
-  cat /tmp/hello
+  cat hello
 
 # optional
 # use_dask: false
 
+# output directory (optional)
+# - sets the directory where the script is run
+# - stores pipeline logs
+# output: /storage/user/output
+
 resources:
   workers: 1
   memory: 2
-  threads: 2
+  cores: 2
 ```
 
 The `command` argument is anything that can be executed in a shell script, or indeed

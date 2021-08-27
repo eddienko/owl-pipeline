@@ -116,12 +116,12 @@ resources:
 
       <div class="col-md-6 code-block">
         <pre><code class="language-python">from dask import delayed
-import logging
+from owl_dev import pipeline
+from owl_dev.logging import logger
 
-logger = logging.getLogger("owl.daemon.pipeline")
-  
 
-def main(*, datalen: int) -> int:
+@pipeline
+def main(*, datalen: int, output: Path=None):
     logger.info("Computing...")
 
     output = []

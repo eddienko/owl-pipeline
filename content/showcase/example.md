@@ -17,6 +17,17 @@ link: https://github.com/eddienko/owl-example-pipeline
 
 Given a list of `1...n` numbers does a series of operations in each of them and computes the result sum using Dask delayed adding random sleep times in each operation. The `datalen` argument is the length of the list.
 
+
+## Install
+
+```bash
+curl -O https://raw.githubusercontent.com/eddienko/owl-example-pipeline/main/owl_example/signature.yml
+owl admin pdef add signature.yml
+```
+
+## Pipeline Definition File
+
+
 ```yaml
 version: 1
 
@@ -28,7 +39,7 @@ datalen: 100
 
 # Resources requested
 resources:
-  threads: 10
+  cores: 10
   workers: 2
   memory: 10
 ```

@@ -67,8 +67,8 @@ owl auth login
 
 ```bash
 # Example pipeline
-curl -O https://raw.githubusercontent.com/eddienko/owl-pipeline-client/main/pipelines/signature_example.yaml
-owl admin pdef add signature_example.yaml
+curl -O https://raw.githubusercontent.com/eddienko/owl-example-pipeline/main/owl_example/signature.yml
+owl admin pdef add signature.yml
 ```
 
 Check that they are available:

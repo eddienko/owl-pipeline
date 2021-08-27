@@ -25,6 +25,12 @@ Currently we implement the `cellranger count` method that takes FASTQ files from
 
 * The Cell Ranger software and reference data must be available to the pipeline in a mounted volume. By default cellranger is located in `/soft/cellranger/bin/cellranger`. Use the `soft` argument in the pipeline definition file (see below) to change it.
 
+## Install
+
+```bash
+curl -O https://raw.githubusercontent.com/eddienko/owl-cellranger-pipeline/main/owl_cellranger/cellranger.yaml
+owl admin pdef add cellranger.yaml
+```
 ## Pipeline Definition File
 
 An example pipeline definition file is:
@@ -52,6 +58,6 @@ extra: ["--localcores", "20", "--localmem", "64"]
 
 requirements:
   workers: 1
-  threads: 25
+  cores: 25
   memory: 64
 ```

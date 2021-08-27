@@ -10,7 +10,7 @@ menu:
   docs:
     parent: "pipelines"
 weight: 502
-toc: true
+toc: false
 ---
 
 Pipelines are Python packages installable using `pip`, i.e. they can uploaded to PyPi or
