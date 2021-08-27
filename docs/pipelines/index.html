@@ -14,28 +14,28 @@
 <meta name=robots content="index, follow">
 <meta name=googlebot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name=bingbot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<title>Pipeline Signatures - Owl</title>
+<title>Owl Pipelines - Owl</title>
 <meta name=description content="Owl is a job scheduler that allows to submit user jobs to a Kubernetes from anywhere.">
-<link rel=canonical href=https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/>
+<link rel=canonical href=https://eddienko.github.io/owl-pipeline/docs/pipelines/>
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pipeline Signatures">
-<meta property="og:description" content="Pipelines are Python packages installable using pip, i.e. they can uploaded to PyPi or to a private repository. In order for the server to run a pipeline this needs to be defined as active in the system. Otherwise any pip installable package with the correct entrypoint could be run in the system posing a security risk. For this we define pipeline definition signatures.
-The pipeline definition signatures that are used with the admin pdef commands (see Admin commands) are slightly different to the pipeline definition files used to submit a pipeline.">
-<meta property="og:url" content="https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/">
+<meta property="og:title" content="Owl Pipelines">
+<meta property="og:description" content="Owl pipelines are pip installable Python packages. In order to submit a pipeline to the system, the admin must have activated it and you need a pipeline definition file (PDeF). This is a YAML file that contains the name of the pipeline, its arguments and requested resources.
+A pipeline defintion file typically starts with setting a version number. This is used so that individual pipelines can limit the version numbers that they can run after e.">
+<meta property="og:url" content="https://eddienko.github.io/owl-pipeline/docs/pipelines/">
 <meta property="og:site_name" content="Owl">
-<meta property="article:published_time" content="2021-08-15T20:55:31+01:00">
-<meta property="article:modified_time" content="2021-08-15T20:55:31+01:00">
+<meta property="article:published_time" content="2021-08-15T21:00:06+01:00">
+<meta property="article:modified_time" content="2021-08-15T21:00:06+01:00">
 <meta property="og:image" content="https://eddienko.github.io/owl-pipeline/owl.png">
 <meta property="og:image:alt" content="Owl">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:site content="Owl">
 <meta name=twitter:creator content="@eddienko">
-<meta name=twitter:title content="Pipeline Signatures">
+<meta name=twitter:title content="Owl Pipelines">
 <meta name=twitter:description content>
 <meta name=twitter:image content="https://eddienko.github.io/owl-pipeline/owl.png">
-<meta name=twitter:image:alt content="Pipeline Signatures">
-<script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://eddienko.github.io/#/schema/person/1","name":"Owl","url":"https://eddienko.github.io/","sameAs":["https://twitter.com/eddienko","https://github.com/eddienko/owl-pipeline"],"image":{"@type":"ImageObject","@id":"https://eddienko.github.io/#/schema/image/1","url":"https://eddienko.github.io/owl.png","width":1280,"height":640,"caption":"Owl"}},{"@type":"WebSite","@id":"https://eddienko.github.io/#/schema/website/1","url":"https://eddienko.github.io/","name":"Owl","description":"Owl is a job scheduler that allows to submit user jobs to a Kubernetes from anywhere.","publisher":{"@id":"https://eddienko.github.io/#/schema/person/1"}},{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/","url":"https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/","name":"Pipeline Signatures","description":"","isPartOf":{"@id":"https://eddienko.github.io/#/schema/website/1"},"about":{"@id":"https://eddienko.github.io/#/schema/person/1"},"datePublished":"2021-08-15T20:55:31CET","dateModified":"2021-08-15T20:55:31CET","breadcrumb":{"@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/#/schema/breadcrumb/1"},"primaryImageOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/#/schema/image/2"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/"]}]},{"@type":"BreadcrumbList","@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/#/schema/breadcrumb/1","name":"Breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/","url":"https://eddienko.github.io/owl-pipeline/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/","url":"https://eddienko.github.io/owl-pipeline/docs/","name":"Docs"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/","url":"https://eddienko.github.io/owl-pipeline/docs/pipelines/","name":"Pipelines"}},{"@type":"ListItem","position":4,"item":{"@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://eddienko.github.io/#/schema/article/1","headline":"Pipeline Signatures","description":"","isPartOf":{"@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/"},"mainEntityOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/"},"datePublished":"2021-08-15T20:55:31CET","dateModified":"2021-08-15T20:55:31CET","author":{"@id":"https://eddienko.github.io/#/schema/person/2"},"publisher":{"@id":"https://eddienko.github.io/#/schema/person/1"},"image":{"@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/#/schema/image/2"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://eddienko.github.io/#/schema/person/2","name":"Eduardo Gonzalez Solares","sameAs":["https://twitter.com/eddienko","https://www.linkedin.com/in/eddienko/","https://github.com/eddienko"]}]},{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/#/schema/image/2","url":"https://eddienko.github.io/owl-pipeline/owl.png","contentUrl":"https://eddienko.github.io/owl-pipeline/owl.png","caption":"Pipeline Signatures"}]}]}</script>
+<meta name=twitter:image:alt content="Owl Pipelines">
+<script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://eddienko.github.io/#/schema/person/1","name":"Owl","url":"https://eddienko.github.io/","sameAs":["https://twitter.com/eddienko","https://github.com/eddienko/owl-pipeline"],"image":{"@type":"ImageObject","@id":"https://eddienko.github.io/#/schema/image/1","url":"https://eddienko.github.io/owl.png","width":1280,"height":640,"caption":"Owl"}},{"@type":"WebSite","@id":"https://eddienko.github.io/#/schema/website/1","url":"https://eddienko.github.io/","name":"Owl","description":"Owl is a job scheduler that allows to submit user jobs to a Kubernetes from anywhere.","publisher":{"@id":"https://eddienko.github.io/#/schema/person/1"}},{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/","url":"https://eddienko.github.io/owl-pipeline/docs/pipelines/","name":"Owl Pipelines","description":"","isPartOf":{"@id":"https://eddienko.github.io/#/schema/website/1"},"about":{"@id":"https://eddienko.github.io/#/schema/person/1"},"datePublished":"2021-08-15T21:00:06CET","dateModified":"2021-08-15T21:00:06CET","breadcrumb":{"@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/#/schema/breadcrumb/1"},"primaryImageOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/#/schema/image/2"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://eddienko.github.io/owl-pipeline/docs/pipelines/"]}]},{"@type":"BreadcrumbList","@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/#/schema/breadcrumb/1","name":"Breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/","url":"https://eddienko.github.io/owl-pipeline/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://eddienko.github.io/owl-pipeline/docs/","url":"https://eddienko.github.io/owl-pipeline/docs/","name":"Docs"}},{"@type":"ListItem","position":3,"item":{"@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://eddienko.github.io/#/schema/article/1","headline":"Owl Pipelines","description":"","isPartOf":{"@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/"},"mainEntityOfPage":{"@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/"},"datePublished":"2021-08-15T21:00:06CET","dateModified":"2021-08-15T21:00:06CET","author":{"@id":"https://eddienko.github.io/#/schema/person/2"},"publisher":{"@id":"https://eddienko.github.io/#/schema/person/1"},"image":{"@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/#/schema/image/2"}}]},{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://eddienko.github.io/#/schema/person/2","name":"Eduardo Gonzalez Solares","sameAs":["https://twitter.com/eddienko","https://www.linkedin.com/in/eddienko/","https://github.com/eddienko"]}]},{"@context":"https://schema.org","@graph":[{"@type":"ImageObject","@id":"https://eddienko.github.io/owl-pipeline/docs/pipelines/#/schema/image/2","url":"https://eddienko.github.io/owl-pipeline/owl.png","contentUrl":"https://eddienko.github.io/owl-pipeline/owl.png","caption":"Owl Pipelines"}]}]}</script>
 <meta name=theme-color content="#fff">
 <link rel=apple-touch-icon sizes=180x180 href=https://eddienko.github.io/owl-pipeline/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://eddienko.github.io/owl-pipeline/favicon-32x32.png>
@@ -106,9 +106,7 @@ The pipeline definition signatures that are used with the admin pdef commands (s
 </ul>
 <h3>Pipelines</h3>
 <ul class=list-unstyled>
-<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/>Owl Pipelines</a></li>
-<li><a class="docs-link active" href=https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/>Pipeline Signatures</a></li>
-<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/development/>Development Guide</a></li>
+<li><a class="docs-link active" href=https://eddienko.github.io/owl-pipeline/docs/pipelines/>Owl Pipelines</a></li>
 </ul>
 <h3>Help</h3>
 <ul class=list-unstyled>
@@ -118,62 +116,50 @@ The pipeline definition signatures that are used with the admin pdef commands (s
 </ul>
 </nav>
 </div>
-<nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
-<div class=page-links>
-<h3>On this page</h3>
-<nav id=TableOfContents></nav>
-</div>
-</nav>
-<main class="docs-content col-lg-11 col-xl-9">
-<h1>Pipeline Signatures</h1>
+<main class="docs-content col-lg-11 col-xl-9 mx-xl-auto">
+<h1>Owl Pipelines</h1>
 <p class=lead></p>
-<p>Pipelines are Python packages installable using <code>pip</code>, i.e. they can uploaded to PyPi or
-to a private repository. In order for the server to run a pipeline this needs to be
-defined as active in the system. Otherwise any pip installable package with the correct
-entrypoint could be run in the system posing a security risk. For this we
-define pipeline definition signatures.</p>
-<p>The pipeline definition signatures that are used with the <code>admin pdef</code> commands
-(see <a href=https://eddienko.github.io/owl-pipeline/docs/client/admin/#pipeline-definitions>Admin commands</a>)
-are slightly different to the pipeline definition files used to submit a pipeline.</p>
-<p>The difference is the pressence of two additional keywords in the former: <code>extra_pip_packages</code> and <code>active</code> prepended with <code>sig:</code>:</p>
-<pre><code class=language-yaml># Version of the configuration file
-version: 1
+<p>Owl pipelines are pip installable Python packages. In order to submit a pipeline
+to the system, the admin must have activated it and you need a
+<strong>pipeline definition file (PDeF)</strong>. This is a YAML file that contains
+the name of the pipeline, its arguments and requested resources.</p>
+<p>A pipeline defintion file typically starts with setting a version number. This is used
+so that individual pipelines can limit the version numbers that they can run after e.g.
+a package upgrade.</p>
+<p>Then the arguments that are required for running the pipeline.</p>
+<p>Last the resources requested. The number of workers is set by <code>workers</code>. The values
+in <code>cores</code> and <code>memory</code> specify the number of cores (or vCPUs) and memory in GB per worker.
+Optionally it is possible to specify a Docker image used to run the jobs, otherwise the
+default is used.</p>
+<pre><code class=language-yaml>version: 1
 
-sig:extra_pip_packages: owl-example-pipeline
-sig:active: True
+# ... pipeline arguments ...
 
-# Name of the pipeline
-name: example
+arg1: value1
+arg2: value2
+arg3: true
 
-# Pipeline arguments
-datalen: 100
+# ... end pipeline arguments ...
 
-# Resources requested
 resources:
-  threads: 10
-  workers: 2
-  memory: 2
+  workers: 3
+  cores: 10
+  memory: 30
+  # Image is optional
+  image: user/image-name:tag
 </code></pre>
-<p><strong>extra_pip_packages</strong> lists the package that contains the pipeline
-and <strong>active</strong> sets if users can use it to run pipelines in the server.</p>
-<div class="alert alert-warning d-flex" role=alert>
-<div class="flex-shrink-1 alert-icon">
-<span class="material-icons amber500">info </span>
-</div>
-<div class=w-100> At the moment it is not possible to have two versions of the same pipeline signature.</div>
-</div>
 <div class="docs-navigation d-flex justify-content-between">
-<a href=https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/>
+<a href=https://eddienko.github.io/owl-pipeline/docs/client/admin/>
 <div class="card my-1">
 <div class="card-body py-2">
-&larr; Owl Pipelines
+&larr; Admin Commands
 </div>
 </div>
 </a>
-<a class=ms-auto href=https://eddienko.github.io/owl-pipeline/docs/pipelines/development/>
+<a class=ms-auto href=https://eddienko.github.io/owl-pipeline/docs/help/how-to-contribute/>
 <div class="card my-1">
 <div class="card-body py-2">
-Development Guide &rarr;
+How to Contribute &rarr;
 </div>
 </div>
 </a>
@@ -200,6 +186,6 @@ Development Guide &rarr;
 <script src=https://eddienko.github.io/owl-pipeline/js/bootstrap.min.586171fec3966d1a44fa8aa2edb24b861dc3a72be8cc24aa4e0dabe4c312a0dae5fe1eaa7c93180a6211fa4d7c5461b0d228fdf741be2eae279a376dfa1e7d81.js integrity="sha512-WGFx/sOWbRpE+oqi7bJLhh3DpyvozCSqTg2r5MMSoNrl/h6qfJMYCmIR+k18VGGw0ij990G+Lq4nmjdt+h59gQ==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/js/highlight.min.b7fe51cfee4d403e67d61ca560f9e4854f9786459a26219d149ba72fd88c3a0fed5c687649c151a0686a9b0bf492d5ec9b6b77b426979e63fc767315eeca3a3e.js integrity="sha512-t/5Rz+5NQD5n1hylYPnkhU+XhkWaJiGdFJunL9iMOg/tXGh2ScFRoGhqmwv0ktXsm2t3tCaXnmP8dnMV7so6Pg==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/main.min.9e62c9b0c5dc8279689cc9cb693a32c8ea1d19032f574f98c782ff59a0417d3662ff94b1a7755ab72a7a1862644bf00a58492c65aa0adabbc58080f4018c61bc.js integrity="sha512-nmLJsMXcgnlonMnLaToyyOodGQMvV0+Yx4L/WaBBfTZi/5Sxp3Vatyp6GGJkS/AKWEksZaoK2rvFgID0AYxhvA==" crossorigin=anonymous defer></script>
-<script src=https://eddienko.github.io/owl-pipeline/index.min.d516074e56b92cf3a964434b3f8c9031d0c888932e1607b09bce1ee4c1dfb2e1cfecf7ceef28771b9f9d9516f5ea5710f9f60a837ccefa01e07c707e56ec0cf3.js integrity="sha512-1RYHTla5LPOpZENLP4yQMdDIiJMuFgewm84e5MHfsuHP7PfO7yh3G5+dlRb16lcQ+fYKg3zO+gHgfHB+VuwM8w==" crossorigin=anonymous defer></script>
+<script src=https://eddienko.github.io/owl-pipeline/index.min.0603ad899a46788e003345a9de8a8fc06970260c397aca00bf03cbaf0f5dea885864506cc622c7f44341873ec173af78b5ec6cc4562600e71fe1cf1943f8ec4c.js integrity="sha512-BgOtiZpGeI4AM0Wp3oqPwGlwJgw5esoAvwPLrw9d6ohYZFBsxiLH9ENBhz7Bc694texsxFYmAOcf4c8ZQ/jsTA==" crossorigin=anonymous defer></script>
 </body>
 </html>

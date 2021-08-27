@@ -106,9 +106,7 @@ POD_NAME=$(kubectl get pods --namespace owl -l &#34;app.kubernetes.io/name=owl-s
 </ul>
 <h3>Pipelines</h3>
 <ul class=list-unstyled>
-<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/pipelines/>Owl Pipelines</a></li>
-<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/signatures/>Pipeline Signatures</a></li>
-<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/development/>Development Guide</a></li>
+<li><a class=docs-link href=https://eddienko.github.io/owl-pipeline/docs/pipelines/>Owl Pipelines</a></li>
 </ul>
 <h3>Help</h3>
 <ul class=list-unstyled>
@@ -169,8 +167,8 @@ owl auth login
 </code></pre>
 <h2 id=add-pipeline-signatures>Add pipeline signatures<a href=#add-pipeline-signatures class=anchor aria-hidden=true>#</a> </h2>
 <pre><code class=language-bash># Example pipeline
-curl -O https://raw.githubusercontent.com/eddienko/owl-pipeline-client/main/pipelines/signature_example.yaml
-owl admin pdef add signature_example.yaml
+curl -O https://raw.githubusercontent.com/eddienko/owl-example-pipeline/main/owl_example/signature.yml
+owl admin pdef add signature.yml
 </code></pre>
 <p>Check that they are available:</p>
 <pre><code class=language-bash># List all signatures
@@ -257,6 +255,6 @@ Storage &rarr;
 <script src=https://eddienko.github.io/owl-pipeline/js/bootstrap.min.586171fec3966d1a44fa8aa2edb24b861dc3a72be8cc24aa4e0dabe4c312a0dae5fe1eaa7c93180a6211fa4d7c5461b0d228fdf741be2eae279a376dfa1e7d81.js integrity="sha512-WGFx/sOWbRpE+oqi7bJLhh3DpyvozCSqTg2r5MMSoNrl/h6qfJMYCmIR+k18VGGw0ij990G+Lq4nmjdt+h59gQ==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/js/highlight.min.b7fe51cfee4d403e67d61ca560f9e4854f9786459a26219d149ba72fd88c3a0fed5c687649c151a0686a9b0bf492d5ec9b6b77b426979e63fc767315eeca3a3e.js integrity="sha512-t/5Rz+5NQD5n1hylYPnkhU+XhkWaJiGdFJunL9iMOg/tXGh2ScFRoGhqmwv0ktXsm2t3tCaXnmP8dnMV7so6Pg==" crossorigin=anonymous defer></script>
 <script src=https://eddienko.github.io/owl-pipeline/main.min.9e62c9b0c5dc8279689cc9cb693a32c8ea1d19032f574f98c782ff59a0417d3662ff94b1a7755ab72a7a1862644bf00a58492c65aa0adabbc58080f4018c61bc.js integrity="sha512-nmLJsMXcgnlonMnLaToyyOodGQMvV0+Yx4L/WaBBfTZi/5Sxp3Vatyp6GGJkS/AKWEksZaoK2rvFgID0AYxhvA==" crossorigin=anonymous defer></script>
-<script src=https://eddienko.github.io/owl-pipeline/index.min.d516074e56b92cf3a964434b3f8c9031d0c888932e1607b09bce1ee4c1dfb2e1cfecf7ceef28771b9f9d9516f5ea5710f9f60a837ccefa01e07c707e56ec0cf3.js integrity="sha512-1RYHTla5LPOpZENLP4yQMdDIiJMuFgewm84e5MHfsuHP7PfO7yh3G5+dlRb16lcQ+fYKg3zO+gHgfHB+VuwM8w==" crossorigin=anonymous defer></script>
+<script src=https://eddienko.github.io/owl-pipeline/index.min.0603ad899a46788e003345a9de8a8fc06970260c397aca00bf03cbaf0f5dea885864506cc622c7f44341873ec173af78b5ec6cc4562600e71fe1cf1943f8ec4c.js integrity="sha512-BgOtiZpGeI4AM0Wp3oqPwGlwJgw5esoAvwPLrw9d6ohYZFBsxiLH9ENBhz7Bc694texsxFYmAOcf4c8ZQ/jsTA==" crossorigin=anonymous defer></script>
 </body>
 </html>
