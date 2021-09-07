@@ -47,7 +47,7 @@ A minimal example `values.yaml` file:
 image:
   repository: imaxt/owl-server
   pullPolicy: IfNotPresent
-  tag: "0.8.2"
+  # tag: "latest"
 
 # Create service account in RBAC clusters
 serviceAccount:
